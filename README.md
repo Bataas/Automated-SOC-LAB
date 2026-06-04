@@ -47,6 +47,63 @@ The primary objectives of this project were:
 
 
 ## Lab Architecture
+## Lab Architecture
+
+The Automated SOC Lab was designed using a centralized security monitoring architecture hosted on AWS cloud infrastructure.
+
+The environment consists of two primary servers:
+
+### SIEM Server
+
+The SIEM server hosts:
+
+* Wazuh Manager
+* Wazuh Indexer
+* Wazuh Dashboard
+
+This server is responsible for:
+
+* Log collection
+* Event correlation
+* Threat detection
+* Security monitoring
+* Alert generation
+
+### SOC Tools Server
+
+The SOC tools server hosts:
+
+* Shuffle SOAR
+* DFIR-IRIS
+* Grafana
+
+This server is responsible for:
+
+* Security orchestration and automation
+* Incident response case management
+* Threat intelligence enrichment
+* Dashboard visualization and reporting
+
+### Endpoint Monitoring
+
+The platform monitors multiple endpoint types including:
+
+* Windows systems
+* Linux systems
+* macOS systems
+* Network devices
+* Syslog-enabled services
+
+### Threat Detection Workflow
+
+1. Security events are generated from monitored endpoints
+2. Wazuh collects and analyzes logs
+3. Detection rules trigger alerts based on suspicious activity
+4. Shuffle SOAR automates incident response workflows
+5. Threat intelligence APIs enrich indicators of compromise (IOCs)
+6. DFIR-IRIS creates and manages investigation cases
+7. Microsoft Teams receives real-time security notifications
+8. Grafana visualizes security metrics and alerts
 
 ## Features
 
