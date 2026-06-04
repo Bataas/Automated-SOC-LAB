@@ -47,7 +47,6 @@ The primary objectives of this project were:
 
 
 ## Lab Architecture
-## Lab Architecture
 
 The Automated SOC Lab was designed using a centralized security monitoring architecture hosted on AWS cloud infrastructure.
 
@@ -239,7 +238,6 @@ A brute-force attack simulation was performed using Hydra against a Linux target
 
 * T1110 – Brute Force
 
----
 
 ### Network Reconnaissance & Port Scanning
 
@@ -255,7 +253,6 @@ Nmap scans were performed against monitored systems to simulate attacker reconna
 
 * T1046 – Network Service Scanning
 
----
 
 ### Privilege Escalation Simulation
 
@@ -271,7 +268,6 @@ Privilege escalation attempts were simulated using elevated sudo commands and su
 
 * T1548 – Abuse Elevation Control Mechanism
 
----
 
 ### File Integrity Monitoring (FIM) Simulation
 
@@ -287,7 +283,6 @@ Critical system file modifications were performed to validate file integrity mon
 
 * T1565 – Data Manipulation
 
----
 
 ### Lateral Movement Simulation
 
@@ -328,7 +323,6 @@ The integration automatically retrieves:
 
 This allows analysts to quickly determine whether an indicator has been previously associated with malicious activity.
 
----
 
 ### AbuseIPDB Integration
 
@@ -343,7 +337,6 @@ The platform provides:
 
 This information is automatically included in the incident response workflow to support faster decision-making.
 
----
 
 ### Automated IOC Enrichment Workflow
 
@@ -355,7 +348,6 @@ When suspicious activity is detected:
 4. Enriched results are attached to DFIR-IRIS investigation cases
 5. Security teams receive enriched alerts through Microsoft Teams notifications
 
----
 
 ### Benefits of Threat Intelligence Integration
 
@@ -386,7 +378,6 @@ The dashboards include visualization panels for:
 * Endpoint activity monitoring
 * Incident response metrics
 
----
 
 ### Wazuh Integration
 
@@ -399,7 +390,6 @@ The integration supports:
 * Historical log analysis
 * Operational monitoring dashboards
 
----
 
 ### Security Monitoring Benefits
 
@@ -411,7 +401,6 @@ The dashboards improve SOC visibility by enabling:
 * Security event trend analysis
 * Operational reporting and visualization
 
----
 
 ### Real-Time Alert Monitoring
 
@@ -464,7 +453,6 @@ The automation platform improves:
 * Security operations scalability
 * SOC analyst productivity
 
----
 
 ## DFIR & Incident Management
 
@@ -515,7 +503,6 @@ The DFIR workflow supports:
 * Documentation
 * Incident closure
 
----
 
 ## MITRE ATT&CK Mapping
 
@@ -552,7 +539,6 @@ Custom Wazuh detection rules were developed to:
 * Improve detection accuracy
 * Support automated incident response workflows
 
----
 
 ## Project Outcomes
 
@@ -593,7 +579,6 @@ The integrated workflows improved:
 * Security event correlation
 * SOC operational awareness
 
----
 
 ## Screenshots
 
@@ -607,8 +592,6 @@ The repository includes screenshots demonstrating:
 * Microsoft Teams notifications
 * Attack simulation detections
 * SOC monitoring environment
-
----
 
 ## Future Improvements
 
@@ -625,7 +608,6 @@ Planned future enhancements for the Automated SOC Lab include:
 * Threat hunting dashboards
 * Multi-tenant SOC capabilities
 
----
 
 ## Disclaimer
 
@@ -635,15 +617,12 @@ All attack simulations and testing activities were conducted within controlled l
 
 No unauthorized systems or third-party environments were targeted during the development or testing of this project.
 
----
 
 ## Author
 
 **Bishnu Timilsaina**
 Cybersecurity Student | SOC & Detection Engineering Enthusiast | Aspiring Security Analyst & Penetration Tester
 
-* LinkedIn: Add your LinkedIn profile
-* GitHub: Add your GitHub profile
+* LinkedIn: https://www.linkedin.com/in/bishnu-timilsaina/
+* GitHub: https://github.com/Bataas/
 
-
-## Author
