@@ -29,6 +29,23 @@ The primary objectives of this project were:
 
 ## Technologies Used
 
+| Category                         | Technologies                       |
+| -------------------------------- | ---------------------------------- |
+| SIEM                             | Wazuh                              |
+| SOAR                             | Shuffle                            |
+| DFIR & Case Management           | DFIR-IRIS                          |
+| Visualization & Dashboards       | Grafana                            |
+| Threat Intelligence              | VirusTotal, AbuseIPDB              |
+| Cloud Infrastructure             | AWS EC2                            |
+| Operating Systems                | Ubuntu Linux, Windows 10/11, macOS |
+| Log Sources                      | Syslog, Wazuh Agents               |
+| Communication & Alerting         | Microsoft Teams Webhooks           |
+| Security Frameworks              | MITRE ATT&CK                       |
+| Attack Simulation Tools          | Hydra, Nmap                        |
+| Virtualization & Lab Environment | Docker, Proxmox                    |
+| Scripting & Automation           | Python, JSON APIs                  |
+
+
 ## Lab Architecture
 
 ## Features
