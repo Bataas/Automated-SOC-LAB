@@ -13,7 +13,19 @@ The platform supports:
 6. Simulated attack detection and investigation
 
 The objective of this project is to develop practical SOC engineering, detection engineering, and incident response skills through hands-on cybersecurity operations and automation.
+
 ## Objectives
+The primary objectives of this project were:
+
+1. Build a practical cloud-based SOC environment for security monitoring and incident response
+2. Centralize logs and security events from multiple operating systems and devices
+3. Implement automated alert triage and incident response workflows using SOAR technologies
+4. Simulate real-world cyberattacks to test detection and response capabilities
+5. Integrate threat intelligence platforms for IOC enrichment and analysis
+6. Visualize security data and operational metrics using custom dashboards
+7. Develop custom detection rules aligned with the MITRE ATT&CK framework
+8. Improve hands-on skills in SIEM engineering, DFIR processes, and SOC operations
+9. Gain practical experience with cloud infrastructure, security automation, and threat monitoring
 
 ## Technologies Used
 
