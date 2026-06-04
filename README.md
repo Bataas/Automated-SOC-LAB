@@ -106,6 +106,61 @@ The platform monitors multiple endpoint types including:
 8. Grafana visualizes security metrics and alerts
 
 ## Features
+## Features
+
+The Automated SOC Lab includes multiple security monitoring, detection, and incident response capabilities designed to simulate real-world SOC operations.
+
+### Security Monitoring
+
+* Centralized log collection and analysis
+* Real-time security event monitoring
+* Multi-platform endpoint visibility
+* Syslog and agent-based monitoring
+
+### Threat Detection
+
+* Custom Wazuh detection rules
+* Brute-force attack detection
+* Port scan detection
+* Privilege escalation detection
+* File integrity monitoring (FIM)
+* Suspicious authentication monitoring
+
+### Security Automation
+
+* Automated alert triage workflows
+* IOC enrichment using threat intelligence APIs
+* Automated incident creation in DFIR-IRIS
+* Microsoft Teams security notifications
+* Alert deduplication and correlation
+
+### Threat Intelligence Integration
+
+* VirusTotal integration
+* AbuseIPDB integration
+* IOC reputation analysis
+* Automated enrichment of malicious IP addresses
+
+### Visualization & Reporting
+
+* Grafana SOC dashboards
+* Security event visualization
+* Alert trend monitoring
+* Operational monitoring metrics
+
+### Incident Response
+
+* Automated case creation
+* Observable management
+* Incident tracking workflows
+* MITRE ATT&CK technique mapping
+
+### Cloud & Infrastructure
+
+* AWS-based deployment
+* Docker containerized services
+* Scalable SOC architecture
+* Multi-server security operations environment
 
 ## Detection & Response Workflows
 
