@@ -6,11 +6,7 @@ The diagrams demonstrate the cloud infrastructure, SIEM data flow, SOAR automati
 
 ---
 
-## Included Diagrams
-
-### System Architecture
-
-`system-architecture.png`
+# System Architecture
 
 Displays the overall cloud-based SOC infrastructure including:
 
@@ -23,11 +19,13 @@ Displays the overall cloud-based SOC infrastructure including:
 * Microsoft Teams notifications
 * Endpoint monitoring architecture
 
+<p align="center">
+  <img src="system-architecture.png" width="950">
+</p>
+
 ---
 
-### Alert Flow Diagram
-
-`alert-flow-diagram.png`
+# Alert Flow Diagram
 
 Demonstrates the end-to-end security alert processing pipeline including:
 
@@ -38,11 +36,13 @@ Demonstrates the end-to-end security alert processing pipeline including:
 * Case management workflows
 * Notification delivery
 
+<p align="center">
+  <img src="alert-flow.png" width="950">
+</p>
+
 ---
 
-### Incident Response Workflow
-
-`incident-response-workflow.png`
+# Incident Response Workflow
 
 Illustrates the SOC incident response lifecycle including:
 
@@ -54,11 +54,13 @@ Illustrates the SOC incident response lifecycle including:
 * Documentation
 * Incident closure
 
+<p align="center">
+  <img src="incident-response-workflow.png" width="950">
+</p>
+
 ---
 
-### Shuffle SOAR Workflow
-
-`shuffle-soar-workflow.png`
+# Shuffle SOAR Workflow
 
 Shows the implemented Shuffle SOAR automation workflow used for:
 
@@ -69,7 +71,13 @@ Shows the implemented Shuffle SOAR automation workflow used for:
 * Microsoft Teams notifications
 * Security orchestration workflows
 
-## Purpose
+<p align="center">
+  <img src="shuffle-soar-workflow.png" width="950">
+</p>
+
+---
+
+# Purpose
 
 These diagrams provide architectural and operational visibility into the Automated SOC Lab environment and demonstrate practical implementation of:
 
