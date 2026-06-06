@@ -51,7 +51,9 @@ The primary objectives of this project were:
 The Automated SOC Lab was designed using a centralized security monitoring architecture hosted on AWS cloud infrastructure.
 
 The environment consists of two primary servers:
+## System Architecture
 
+![System Architecture](architecture/system-architecture.png)
 ### SIEM Server
 
 The SIEM server hosts:
@@ -59,6 +61,7 @@ The SIEM server hosts:
 * Wazuh Manager
 * Wazuh Indexer
 * Wazuh Dashboard
+![Wazuh Dashboard](screenshots/wazuh-dashboard.png)
 
 This server is responsible for:
 
@@ -69,6 +72,7 @@ This server is responsible for:
 * Alert generation
 
 ### SOC Tools Server
+![SOC Architecture](architecture/system-architecture.png)
 
 The SOC tools server hosts:
 
@@ -165,6 +169,7 @@ The Automated SOC Lab includes multiple security monitoring, detection, and inci
 The Automated SOC Lab uses integrated SIEM and SOAR workflows to automate threat detection, alert enrichment, incident response, and investigation processes.
 
 ### Detection Workflow
+![Shuffle Workflow](architecture/shuffle-soar-workflow.png)
 
 1. Endpoints and monitored systems generate logs and security events
 2. Wazuh agents and Syslog services forward logs to the Wazuh Manager
@@ -455,6 +460,7 @@ The automation platform improves:
 
 
 ## DFIR & Incident Management
+![IRIS Cases](screenshots/iris-case-management.png)
 
 DFIR-IRIS was implemented as the incident response and case management platform for handling security investigations within the Automated SOC Lab.
 
