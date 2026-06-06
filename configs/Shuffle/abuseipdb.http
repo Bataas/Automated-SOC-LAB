@@ -1,0 +1,1 @@
+https://api.abuseipdb.com/api/v2/check?ipAddress=$build_soc_context.message.network_iocs.src_ip&maxAgeInDays=90

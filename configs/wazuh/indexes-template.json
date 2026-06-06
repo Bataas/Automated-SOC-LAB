@@ -1,0 +1,2633 @@
+{
+  "index_templates": [
+    {
+      "name": "wazuh-states-inventory-packages-ip-10-0-1-78_template",
+      "index_template": {
+        "index_patterns": [
+          "wazuh-states-inventory-packages*"
+        ],
+        "template": {
+          "settings": {
+            "index": {
+              "refresh_interval": "2s",
+              "number_of_shards": "1",
+              "number_of_replicas": "0",
+              "query": {
+                "default_field": [
+                  "agent.host.architecture",
+                  "agent.host.ip",
+                  "agent.id",
+                  "agent.name",
+                  "agent.version",
+                  "package.architecture",
+                  "package.category",
+                  "package.description",
+                  "package.installed",
+                  "package.multiarch",
+                  "package.name",
+                  "package.path",
+                  "package.priority",
+                  "package.size",
+                  "package.source",
+                  "package.type",
+                  "package.vendor",
+                  "package.version",
+                  "wazuh.cluster.name",
+                  "wazuh.cluster.node",
+                  "wazuh.schema.version"
+                ]
+              }
+            }
+          },
+          "mappings": {
+            "dynamic": "strict",
+            "date_detection": false,
+            "properties": {
+              "agent": {
+                "properties": {
+                  "host": {
+                    "properties": {
+                      "ip": {
+                        "type": "ip"
+                      },
+                      "architecture": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      }
+                    }
+                  },
+                  "name": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "id": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "version": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  }
+                }
+              },
+              "package": {
+                "properties": {
+                  "installed": {
+                    "type": "date"
+                  },
+                  "description": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "source": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "priority": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "type": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "version": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "path": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "size": {
+                    "type": "long"
+                  },
+                  "vendor": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "name": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "multiarch": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "category": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "architecture": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  }
+                }
+              },
+              "wazuh": {
+                "properties": {
+                  "schema": {
+                    "properties": {
+                      "version": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      }
+                    }
+                  },
+                  "cluster": {
+                    "properties": {
+                      "node": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      },
+                      "name": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "composed_of": [],
+        "priority": 1
+      }
+    },
+    {
+      "name": "wazuh-states-inventory-browser-extensions-ip-10-0-1-78_template",
+      "index_template": {
+        "index_patterns": [
+          "wazuh-states-inventory-browser-extensions*"
+        ],
+        "template": {
+          "settings": {
+            "index": {
+              "refresh_interval": "2s",
+              "number_of_shards": "1",
+              "number_of_replicas": "0",
+              "query": {
+                "default_field": [
+                  "agent.host.architecture",
+                  "agent.host.ip",
+                  "agent.id",
+                  "agent.name",
+                  "agent.version",
+                  "browser.name",
+                  "user.id",
+                  "package.name",
+                  "package.id",
+                  "package.version",
+                  "package.vendor",
+                  "package.type",
+                  "wazuh.cluster.name",
+                  "wazuh.cluster.node",
+                  "wazuh.schema.version"
+                ]
+              }
+            }
+          },
+          "mappings": {
+            "dynamic": "strict",
+            "date_detection": false,
+            "properties": {
+              "agent": {
+                "properties": {
+                  "host": {
+                    "properties": {
+                      "ip": {
+                        "type": "ip"
+                      },
+                      "architecture": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      }
+                    }
+                  },
+                  "name": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "id": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "version": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  }
+                }
+              },
+              "file": {
+                "properties": {
+                  "hash": {
+                    "properties": {
+                      "sha256": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      }
+                    }
+                  }
+                }
+              },
+              "package": {
+                "properties": {
+                  "installed": {
+                    "type": "date"
+                  },
+                  "visible": {
+                    "type": "boolean"
+                  },
+                  "build_version": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "description": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "from_webstore": {
+                    "type": "boolean"
+                  },
+                  "type": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "version": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "autoupdate": {
+                    "type": "boolean"
+                  },
+                  "enabled": {
+                    "type": "boolean"
+                  },
+                  "reference": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "path": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "permissions": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "vendor": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "name": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "id": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "persistent": {
+                    "type": "boolean"
+                  }
+                }
+              },
+              "browser": {
+                "properties": {
+                  "profile": {
+                    "properties": {
+                      "path": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      },
+                      "referenced": {
+                        "type": "boolean"
+                      },
+                      "name": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      }
+                    }
+                  },
+                  "name": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  }
+                }
+              },
+              "wazuh": {
+                "properties": {
+                  "schema": {
+                    "properties": {
+                      "version": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      }
+                    }
+                  },
+                  "cluster": {
+                    "properties": {
+                      "node": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      },
+                      "name": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      }
+                    }
+                  }
+                }
+              },
+              "user": {
+                "properties": {
+                  "id": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "composed_of": [],
+        "priority": 1
+      }
+    },
+    {
+      "name": "wazuh-states-inventory-services-ip-10-0-1-78_template",
+      "index_template": {
+        "index_patterns": [
+          "wazuh-states-inventory-services*"
+        ],
+        "template": {
+          "settings": {
+            "index": {
+              "refresh_interval": "2s",
+              "number_of_shards": "1",
+              "number_of_replicas": "0",
+              "query": {
+                "default_field": [
+                  "agent.host.architecture",
+                  "agent.host.ip",
+                  "agent.id",
+                  "agent.name",
+                  "agent.version",
+                  "service.name",
+                  "service.id",
+                  "service.description",
+                  "service.enabled",
+                  "service.restart",
+                  "service.state",
+                  "service.sub_state",
+                  "service.type",
+                  "service.start_type",
+                  "process.executable",
+                  "file.path",
+                  "log.file.path",
+                  "error.log.file.path",
+                  "process.args",
+                  "process.user.name",
+                  "process.group.name",
+                  "service.address",
+                  "wazuh.cluster.name",
+                  "wazuh.cluster.node",
+                  "wazuh.schema.version"
+                ]
+              }
+            }
+          },
+          "mappings": {
+            "dynamic": "strict",
+            "date_detection": false,
+            "properties": {
+              "agent": {
+                "properties": {
+                  "host": {
+                    "properties": {
+                      "ip": {
+                        "type": "ip"
+                      },
+                      "architecture": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      }
+                    }
+                  },
+                  "name": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "id": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "version": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  }
+                }
+              },
+              "process": {
+                "properties": {
+                  "args": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "pid": {
+                    "type": "long"
+                  },
+                  "working_directory": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "root_directory": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "user": {
+                    "properties": {
+                      "name": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      }
+                    }
+                  },
+                  "executable": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "group": {
+                    "properties": {
+                      "name": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      }
+                    }
+                  }
+                }
+              },
+              "file": {
+                "properties": {
+                  "path": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  }
+                }
+              },
+              "log": {
+                "properties": {
+                  "file": {
+                    "properties": {
+                      "path": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      }
+                    }
+                  }
+                }
+              },
+              "service": {
+                "properties": {
+                  "address": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "sub_state": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "win32_exit_code": {
+                    "type": "integer"
+                  },
+                  "restart": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "description": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "start_type": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "type": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "enabled": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "frequency": {
+                    "type": "long"
+                  },
+                  "target": {
+                    "properties": {
+                      "address": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      },
+                      "ephemeral_id": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      },
+                      "type": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      }
+                    }
+                  },
+                  "following": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "exit_code": {
+                    "type": "integer"
+                  },
+                  "name": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "object_path": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "id": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "state": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "starts": {
+                    "properties": {
+                      "on_path_modified": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      },
+                      "on_mount": {
+                        "type": "boolean"
+                      },
+                      "on_not_empty_directory": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      }
+                    }
+                  },
+                  "inetd_compatibility": {
+                    "type": "boolean"
+                  }
+                }
+              },
+              "wazuh": {
+                "properties": {
+                  "schema": {
+                    "properties": {
+                      "version": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      }
+                    }
+                  },
+                  "cluster": {
+                    "properties": {
+                      "node": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      },
+                      "name": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      }
+                    }
+                  }
+                }
+              },
+              "error": {
+                "properties": {
+                  "log": {
+                    "properties": {
+                      "file": {
+                        "properties": {
+                          "path": {
+                            "ignore_above": 1024,
+                            "type": "keyword"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "composed_of": [],
+        "priority": 1
+      }
+    },
+    {
+      "name": "wazuh-states-inventory-interfaces-ip-10-0-1-78_template",
+      "index_template": {
+        "index_patterns": [
+          "wazuh-states-inventory-interfaces*"
+        ],
+        "template": {
+          "settings": {
+            "index": {
+              "refresh_interval": "2s",
+              "number_of_shards": "1",
+              "number_of_replicas": "0",
+              "query": {
+                "default_field": [
+                  "agent.id",
+                  "agent.name",
+                  "agent.version",
+                  "agent.host.ip",
+                  "host.mac",
+                  "interface.name",
+                  "interface.alias",
+                  "wazuh.cluster.name",
+                  "wazuh.cluster.node"
+                ]
+              }
+            }
+          },
+          "mappings": {
+            "dynamic": "strict",
+            "date_detection": false,
+            "properties": {
+              "agent": {
+                "properties": {
+                  "host": {
+                    "properties": {
+                      "ip": {
+                        "type": "ip"
+                      },
+                      "architecture": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      }
+                    }
+                  },
+                  "name": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "id": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "version": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  }
+                }
+              },
+              "host": {
+                "properties": {
+                  "mac": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "network": {
+                    "properties": {
+                      "ingress": {
+                        "properties": {
+                          "drops": {
+                            "type": "long"
+                          },
+                          "bytes": {
+                            "type": "long"
+                          },
+                          "errors": {
+                            "type": "long"
+                          },
+                          "packets": {
+                            "type": "long"
+                          }
+                        }
+                      },
+                      "egress": {
+                        "properties": {
+                          "drops": {
+                            "type": "long"
+                          },
+                          "bytes": {
+                            "type": "long"
+                          },
+                          "errors": {
+                            "type": "long"
+                          },
+                          "packets": {
+                            "type": "long"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "wazuh": {
+                "properties": {
+                  "schema": {
+                    "properties": {
+                      "version": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      }
+                    }
+                  },
+                  "cluster": {
+                    "properties": {
+                      "node": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      },
+                      "name": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      }
+                    }
+                  }
+                }
+              },
+              "interface": {
+                "properties": {
+                  "name": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "alias": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "state": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "type": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "mtu": {
+                    "type": "long"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "composed_of": [],
+        "priority": 1
+      }
+    },
+    {
+      "name": "wazuh-states-inventory-system-ip-10-0-1-78_template",
+      "index_template": {
+        "index_patterns": [
+          "wazuh-states-inventory-system*"
+        ],
+        "template": {
+          "settings": {
+            "index": {
+              "refresh_interval": "2s",
+              "number_of_shards": "1",
+              "number_of_replicas": "0",
+              "query": {
+                "default_field": [
+                  "agent.host.architecture",
+                  "agent.host.ip",
+                  "agent.id",
+                  "agent.name",
+                  "agent.version",
+                  "host.architecture",
+                  "host.hostname",
+                  "host.os.build",
+                  "host.os.codename",
+                  "host.os.distribution.release",
+                  "host.os.full",
+                  "host.os.kernel.name",
+                  "host.os.kernel.release",
+                  "host.os.kernel.version",
+                  "host.os.major",
+                  "host.os.minor",
+                  "host.os.name",
+                  "host.os.patch",
+                  "host.os.platform",
+                  "host.os.type",
+                  "host.os.version",
+                  "wazuh.cluster.name",
+                  "wazuh.cluster.node",
+                  "wazuh.schema.version"
+                ]
+              }
+            }
+          },
+          "mappings": {
+            "dynamic": "strict",
+            "date_detection": false,
+            "properties": {
+              "agent": {
+                "properties": {
+                  "host": {
+                    "properties": {
+                      "ip": {
+                        "type": "ip"
+                      },
+                      "architecture": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      }
+                    }
+                  },
+                  "name": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "id": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "version": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  }
+                }
+              },
+              "host": {
+                "properties": {
+                  "hostname": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "os": {
+                    "properties": {
+                      "patch": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      },
+                      "major": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      },
+                      "minor": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      },
+                      "build": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      },
+                      "kernel": {
+                        "properties": {
+                          "release": {
+                            "ignore_above": 1024,
+                            "type": "keyword"
+                          },
+                          "name": {
+                            "ignore_above": 1024,
+                            "type": "keyword"
+                          },
+                          "version": {
+                            "ignore_above": 1024,
+                            "type": "keyword"
+                          }
+                        }
+                      },
+                      "codename": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      },
+                      "name": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      },
+                      "distribution": {
+                        "properties": {
+                          "release": {
+                            "ignore_above": 1024,
+                            "type": "keyword"
+                          }
+                        }
+                      },
+                      "type": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      },
+                      "version": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      },
+                      "platform": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      },
+                      "full": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      }
+                    }
+                  },
+                  "architecture": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  }
+                }
+              },
+              "wazuh": {
+                "properties": {
+                  "schema": {
+                    "properties": {
+                      "version": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      }
+                    }
+                  },
+                  "cluster": {
+                    "properties": {
+                      "node": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      },
+                      "name": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "composed_of": [],
+        "priority": 1
+      }
+    },
+    {
+      "name": "wazuh-states-vulnerabilities-ip-10-0-1-78_template",
+      "index_template": {
+        "index_patterns": [
+          "wazuh-states-vulnerabilities-*"
+        ],
+        "template": {
+          "settings": {
+            "index": {
+              "codec": "best_compression",
+              "mapping": {
+                "total_fields": {
+                  "limit": "1000"
+                }
+              },
+              "refresh_interval": "2s",
+              "number_of_shards": "1",
+              "number_of_replicas": "0",
+              "query": {
+                "default_field": [
+                  "agent.id",
+                  "host.os.full",
+                  "host.os.version",
+                  "package.name",
+                  "package.version",
+                  "vulnerability.id",
+                  "vulnerability.description",
+                  "vulnerability.severity",
+                  "wazuh.cluster.name"
+                ]
+              }
+            }
+          },
+          "mappings": {
+            "dynamic": "strict",
+            "date_detection": false,
+            "properties": {
+              "agent": {
+                "properties": {
+                  "build": {
+                    "properties": {
+                      "original": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      }
+                    }
+                  },
+                  "name": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "id": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "ephemeral_id": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "type": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "version": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  }
+                }
+              },
+              "package": {
+                "properties": {
+                  "installed": {
+                    "type": "date"
+                  },
+                  "build_version": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "description": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "type": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "version": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "reference": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "license": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "path": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "install_scope": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "size": {
+                    "type": "long"
+                  },
+                  "checksum": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "name": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "architecture": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  }
+                }
+              },
+              "host": {
+                "properties": {
+                  "os": {
+                    "properties": {
+                      "kernel": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      },
+                      "name": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      },
+                      "type": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      },
+                      "version": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      },
+                      "platform": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      },
+                      "full": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      }
+                    }
+                  }
+                }
+              },
+              "wazuh": {
+                "properties": {
+                  "schema": {
+                    "properties": {
+                      "version": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      }
+                    }
+                  },
+                  "cluster": {
+                    "properties": {
+                      "node": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      },
+                      "name": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      }
+                    }
+                  }
+                }
+              },
+              "vulnerability": {
+                "properties": {
+                  "severity": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "description": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "classification": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "under_evaluation": {
+                    "type": "boolean"
+                  },
+                  "reference": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "detected_at": {
+                    "type": "date"
+                  },
+                  "score": {
+                    "properties": {
+                      "environmental": {
+                        "type": "float"
+                      },
+                      "version": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      },
+                      "temporal": {
+                        "type": "float"
+                      },
+                      "base": {
+                        "type": "float"
+                      }
+                    }
+                  },
+                  "report_id": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "scanner": {
+                    "properties": {
+                      "reference": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      },
+                      "condition": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      },
+                      "vendor": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      },
+                      "source": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      }
+                    }
+                  },
+                  "id": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "category": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "enumeration": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "published_at": {
+                    "type": "date"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "composed_of": [],
+        "priority": 1
+      }
+    },
+    {
+      "name": "wazuh-states-inventory-hardware-ip-10-0-1-78_template",
+      "index_template": {
+        "index_patterns": [
+          "wazuh-states-inventory-hardware*"
+        ],
+        "template": {
+          "settings": {
+            "index": {
+              "refresh_interval": "2s",
+              "number_of_shards": "1",
+              "number_of_replicas": "0",
+              "query": {
+                "default_field": [
+                  "agent.host.architecture",
+                  "agent.host.ip",
+                  "agent.id",
+                  "agent.name",
+                  "agent.version",
+                  "agent.host.ip",
+                  "host.serial_number",
+                  "wazuh.cluster.name",
+                  "wazuh.cluster.node",
+                  "wazuh.schema.version"
+                ]
+              }
+            }
+          },
+          "mappings": {
+            "dynamic": "strict",
+            "date_detection": false,
+            "properties": {
+              "agent": {
+                "properties": {
+                  "host": {
+                    "properties": {
+                      "ip": {
+                        "type": "ip"
+                      },
+                      "architecture": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      }
+                    }
+                  },
+                  "name": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "id": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "version": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  }
+                }
+              },
+              "host": {
+                "properties": {
+                  "memory": {
+                    "properties": {
+                      "total": {
+                        "type": "long"
+                      },
+                      "usage": {
+                        "scaling_factor": 100,
+                        "type": "scaled_float"
+                      },
+                      "used": {
+                        "type": "long"
+                      },
+                      "free": {
+                        "type": "long"
+                      }
+                    }
+                  },
+                  "cpu": {
+                    "properties": {
+                      "cores": {
+                        "type": "short"
+                      },
+                      "name": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      },
+                      "speed": {
+                        "type": "long"
+                      }
+                    }
+                  },
+                  "serial_number": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  }
+                }
+              },
+              "wazuh": {
+                "properties": {
+                  "schema": {
+                    "properties": {
+                      "version": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      }
+                    }
+                  },
+                  "cluster": {
+                    "properties": {
+                      "node": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      },
+                      "name": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "composed_of": [],
+        "priority": 1
+      }
+    },
+    {
+      "name": "wazuh-states-inventory-groups-ip-10-0-1-78_template",
+      "index_template": {
+        "index_patterns": [
+          "wazuh-states-inventory-groups*"
+        ],
+        "template": {
+          "settings": {
+            "index": {
+              "refresh_interval": "2s",
+              "number_of_shards": "1",
+              "number_of_replicas": "0",
+              "query": {
+                "default_field": [
+                  "group.name",
+                  "group.description",
+                  "group.id_signed",
+                  "group.uuid",
+                  "group.users"
+                ]
+              }
+            }
+          },
+          "mappings": {
+            "dynamic": "strict",
+            "date_detection": false,
+            "properties": {
+              "agent": {
+                "properties": {
+                  "host": {
+                    "properties": {
+                      "ip": {
+                        "type": "ip"
+                      },
+                      "architecture": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      }
+                    }
+                  },
+                  "name": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "id": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "version": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  }
+                }
+              },
+              "wazuh": {
+                "properties": {
+                  "schema": {
+                    "properties": {
+                      "version": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      }
+                    }
+                  },
+                  "cluster": {
+                    "properties": {
+                      "node": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      },
+                      "name": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      }
+                    }
+                  }
+                }
+              },
+              "group": {
+                "properties": {
+                  "is_hidden": {
+                    "type": "boolean"
+                  },
+                  "name": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "description": {
+                    "type": "match_only_text"
+                  },
+                  "id": {
+                    "type": "unsigned_long"
+                  },
+                  "id_signed": {
+                    "type": "long"
+                  },
+                  "uuid": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "users": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "composed_of": [],
+        "priority": 1
+      }
+    },
+    {
+      "name": "wazuh-alerts-fielddata-fix",
+      "index_template": {
+        "index_patterns": [
+          "wazuh-alerts-4.x-*"
+        ],
+        "template": {
+          "mappings": {
+            "properties": {
+              "syscheck": {
+                "properties": {
+                  "value_type": {
+                    "type": "keyword"
+                  },
+                  "size_before": {
+                    "type": "keyword"
+                  },
+                  "uname_after": {
+                    "type": "keyword"
+                  },
+                  "size_after": {
+                    "type": "keyword"
+                  },
+                  "sha256_before": {
+                    "type": "keyword"
+                  },
+                  "uid_before": {
+                    "type": "keyword"
+                  },
+                  "mode": {
+                    "type": "keyword"
+                  },
+                  "path": {
+                    "type": "keyword"
+                  },
+                  "changed_attributes": {
+                    "type": "keyword"
+                  },
+                  "gname_after": {
+                    "type": "keyword"
+                  },
+                  "uid_after": {
+                    "type": "keyword"
+                  },
+                  "gname_before": {
+                    "type": "keyword"
+                  },
+                  "event": {
+                    "type": "keyword"
+                  },
+                  "perm_after": {
+                    "type": "keyword"
+                  },
+                  "value_name": {
+                    "type": "keyword"
+                  },
+                  "gid_before": {
+                    "type": "keyword"
+                  },
+                  "perm_before": {
+                    "type": "keyword"
+                  },
+                  "md5_before": {
+                    "type": "keyword"
+                  },
+                  "gid_after": {
+                    "type": "keyword"
+                  },
+                  "uname_before": {
+                    "type": "keyword"
+                  },
+                  "sha1_after": {
+                    "type": "keyword"
+                  },
+                  "attrs_after": {
+                    "type": "keyword"
+                  },
+                  "arch": {
+                    "type": "keyword"
+                  },
+                  "md5_after": {
+                    "type": "keyword"
+                  },
+                  "sha1_before": {
+                    "type": "keyword"
+                  },
+                  "sha256_after": {
+                    "type": "keyword"
+                  }
+                }
+              },
+              "agent": {
+                "properties": {
+                  "ip": {
+                    "type": "keyword"
+                  },
+                  "name": {
+                    "type": "keyword"
+                  },
+                  "id": {
+                    "type": "keyword"
+                  }
+                }
+              },
+              "manager": {
+                "properties": {
+                  "name": {
+                    "type": "keyword"
+                  }
+                }
+              },
+              "data": {
+                "properties": {
+                  "srcuser": {
+                    "type": "keyword"
+                  },
+                  "uid": {
+                    "type": "keyword"
+                  },
+                  "srcip": {
+                    "type": "keyword"
+                  },
+                  "protocol": {
+                    "type": "keyword"
+                  },
+                  "package": {
+                    "type": "keyword"
+                  },
+                  "level": {
+                    "type": "keyword"
+                  },
+                  "dstuser": {
+                    "type": "keyword"
+                  },
+                  "srcport": {
+                    "type": "keyword"
+                  },
+                  "title": {
+                    "type": "keyword"
+                  }
+                }
+              },
+              "rule": {
+                "properties": {
+                  "cis_csc_v8": {
+                    "type": "keyword"
+                  },
+                  "hipaa": {
+                    "type": "keyword"
+                  },
+                  "pci_dss": {
+                    "type": "keyword"
+                  },
+                  "tsc": {
+                    "type": "keyword"
+                  },
+                  "nist_sp_800-53": {
+                    "type": "keyword"
+                  },
+                  "description": {
+                    "type": "keyword"
+                  },
+                  "groups": {
+                    "type": "keyword"
+                  },
+                  "mitre_tactics": {
+                    "type": "keyword"
+                  },
+                  "mitre_techniques": {
+                    "type": "keyword"
+                  },
+                  "cis": {
+                    "type": "keyword"
+                  },
+                  "iso_27001-2013": {
+                    "type": "keyword"
+                  },
+                  "nist_800_53": {
+                    "type": "keyword"
+                  },
+                  "mitre_mitigations": {
+                    "type": "keyword"
+                  },
+                  "gdpr": {
+                    "type": "keyword"
+                  },
+                  "soc_2": {
+                    "type": "keyword"
+                  },
+                  "mitre": {
+                    "properties": {
+                      "technique": {
+                        "type": "keyword"
+                      },
+                      "id": {
+                        "type": "keyword"
+                      },
+                      "tactic": {
+                        "type": "keyword"
+                      }
+                    }
+                  },
+                  "id": {
+                    "type": "keyword"
+                  },
+                  "cis_csc_v7": {
+                    "type": "keyword"
+                  },
+                  "gpg13": {
+                    "type": "keyword"
+                  },
+                  "info": {
+                    "type": "keyword"
+                  }
+                }
+              },
+              "location": {
+                "type": "keyword"
+              },
+              "GeoLocation": {
+                "properties": {
+                  "city_name": {
+                    "type": "keyword"
+                  },
+                  "country_name": {
+                    "type": "keyword"
+                  },
+                  "region_name": {
+                    "type": "keyword"
+                  }
+                }
+              },
+              "decoder": {
+                "properties": {
+                  "parent": {
+                    "type": "keyword"
+                  },
+                  "name": {
+                    "type": "keyword"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "composed_of": [],
+        "priority": 600
+      }
+    },
+    {
+      "name": "wazuh-states-inventory-users-ip-10-0-1-78_template",
+      "index_template": {
+        "index_patterns": [
+          "wazuh-states-inventory-users*"
+        ],
+        "template": {
+          "settings": {
+            "index": {
+              "refresh_interval": "2s",
+              "number_of_shards": "1",
+              "number_of_replicas": "0",
+              "query": {
+                "default_field": [
+                  "user.id",
+                  "user.name",
+                  "user.home",
+                  "user.type",
+                  "user.created",
+                  "user.groups",
+                  "user.uuid",
+                  "user.auth_failures.timestamp",
+                  "user.auth_failures.count",
+                  "user.group.id_signed",
+                  "user.login.status",
+                  "user.login.type",
+                  "user.login.tty",
+                  "user.password.status",
+                  "user.password.last_change",
+                  "user.password.expiration_date",
+                  "user.roles",
+                  "user.last_login",
+                  "process.pid",
+                  "host.ip"
+                ]
+              }
+            }
+          },
+          "mappings": {
+            "dynamic": "strict",
+            "date_detection": false,
+            "properties": {
+              "agent": {
+                "properties": {
+                  "host": {
+                    "properties": {
+                      "ip": {
+                        "type": "ip"
+                      },
+                      "architecture": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      }
+                    }
+                  },
+                  "name": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "id": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "version": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  }
+                }
+              },
+              "process": {
+                "properties": {
+                  "pid": {
+                    "type": "long"
+                  }
+                }
+              },
+              "host": {
+                "properties": {
+                  "ip": {
+                    "type": "ip"
+                  }
+                }
+              },
+              "wazuh": {
+                "properties": {
+                  "schema": {
+                    "properties": {
+                      "version": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      }
+                    }
+                  },
+                  "cluster": {
+                    "properties": {
+                      "node": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      },
+                      "name": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      }
+                    }
+                  }
+                }
+              },
+              "login": {
+                "properties": {
+                  "tty": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "type": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "status": {
+                    "type": "boolean"
+                  }
+                }
+              },
+              "user": {
+                "properties": {
+                  "created": {
+                    "type": "date"
+                  },
+                  "last_login": {
+                    "type": "date"
+                  },
+                  "roles": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "is_hidden": {
+                    "type": "boolean"
+                  },
+                  "is_remote": {
+                    "type": "boolean"
+                  },
+                  "groups": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "type": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "uuid": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "home": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "password": {
+                    "properties": {
+                      "warning_days_before_expiration": {
+                        "type": "integer"
+                      },
+                      "max_days_between_changes": {
+                        "type": "integer"
+                      },
+                      "last_change": {
+                        "type": "date"
+                      },
+                      "hash_algorithm": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      },
+                      "inactive_days": {
+                        "type": "integer"
+                      },
+                      "expiration_date": {
+                        "type": "date"
+                      },
+                      "min_days_between_changes": {
+                        "type": "integer"
+                      },
+                      "status": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      }
+                    }
+                  },
+                  "full_name": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "shell": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "uid_signed": {
+                    "type": "long"
+                  },
+                  "name": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "id": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "auth_failures": {
+                    "properties": {
+                      "count": {
+                        "type": "integer"
+                      },
+                      "timestamp": {
+                        "type": "date"
+                      }
+                    }
+                  },
+                  "group": {
+                    "properties": {
+                      "id": {
+                        "type": "unsigned_long"
+                      },
+                      "id_signed": {
+                        "type": "long"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "composed_of": [],
+        "priority": 1
+      }
+    },
+    {
+      "name": "wazuh-states-inventory-processes-ip-10-0-1-78_template",
+      "index_template": {
+        "index_patterns": [
+          "wazuh-states-inventory-processes*"
+        ],
+        "template": {
+          "settings": {
+            "index": {
+              "refresh_interval": "2s",
+              "number_of_shards": "1",
+              "number_of_replicas": "0",
+              "query": {
+                "default_field": [
+                  "agent.host.architecture",
+                  "agent.host.ip",
+                  "agent.id",
+                  "agent.name",
+                  "agent.version",
+                  "process.args",
+                  "process.args_count",
+                  "process.command_line",
+                  "process.name",
+                  "process.parent.pid",
+                  "process.pid",
+                  "process.start",
+                  "process.state",
+                  "process.stime",
+                  "process.utime",
+                  "wazuh.cluster.name",
+                  "wazuh.cluster.node",
+                  "wazuh.schema.version"
+                ]
+              }
+            }
+          },
+          "mappings": {
+            "dynamic": "strict",
+            "date_detection": false,
+            "properties": {
+              "agent": {
+                "properties": {
+                  "host": {
+                    "properties": {
+                      "ip": {
+                        "type": "ip"
+                      },
+                      "architecture": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      }
+                    }
+                  },
+                  "name": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "id": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "version": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  }
+                }
+              },
+              "process": {
+                "properties": {
+                  "args": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "parent": {
+                    "properties": {
+                      "pid": {
+                        "type": "long"
+                      }
+                    }
+                  },
+                  "utime": {
+                    "type": "long"
+                  },
+                  "name": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "start": {
+                    "type": "date"
+                  },
+                  "pid": {
+                    "type": "long"
+                  },
+                  "stime": {
+                    "type": "long"
+                  },
+                  "args_count": {
+                    "type": "long"
+                  },
+                  "state": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "command_line": {
+                    "type": "keyword"
+                  }
+                }
+              },
+              "wazuh": {
+                "properties": {
+                  "schema": {
+                    "properties": {
+                      "version": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      }
+                    }
+                  },
+                  "cluster": {
+                    "properties": {
+                      "node": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      },
+                      "name": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "composed_of": [],
+        "priority": 1
+      }
+    },
+    {
+      "name": "wazuh-states-inventory-networks-ip-10-0-1-78_template",
+      "index_template": {
+        "index_patterns": [
+          "wazuh-states-inventory-networks*"
+        ],
+        "template": {
+          "settings": {
+            "index": {
+              "refresh_interval": "2s",
+              "number_of_shards": "1",
+              "number_of_replicas": "0",
+              "query": {
+                "default_field": [
+                  "agent.id",
+                  "agent.name",
+                  "agent.version",
+                  "agent.host.ip",
+                  "interface.name",
+                  "network.ip",
+                  "network.name",
+                  "wazuh.cluster.name",
+                  "wazuh.cluster.node"
+                ]
+              }
+            }
+          },
+          "mappings": {
+            "dynamic": "strict",
+            "date_detection": false,
+            "properties": {
+              "agent": {
+                "properties": {
+                  "host": {
+                    "properties": {
+                      "ip": {
+                        "type": "ip"
+                      },
+                      "architecture": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      }
+                    }
+                  },
+                  "name": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "id": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "version": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  }
+                }
+              },
+              "wazuh": {
+                "properties": {
+                  "schema": {
+                    "properties": {
+                      "version": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      }
+                    }
+                  },
+                  "cluster": {
+                    "properties": {
+                      "node": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      },
+                      "name": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      }
+                    }
+                  }
+                }
+              },
+              "interface": {
+                "properties": {
+                  "name": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  }
+                }
+              },
+              "network": {
+                "properties": {
+                  "broadcast": {
+                    "type": "ip"
+                  },
+                  "metric": {
+                    "type": "long"
+                  },
+                  "netmask": {
+                    "type": "ip"
+                  },
+                  "ip": {
+                    "type": "ip"
+                  },
+                  "type": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "dhcp": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "composed_of": [],
+        "priority": 1
+      }
+    },
+    {
+      "name": "wazuh-states-inventory-ports-ip-10-0-1-78_template",
+      "index_template": {
+        "index_patterns": [
+          "wazuh-states-inventory-ports*"
+        ],
+        "template": {
+          "settings": {
+            "index": {
+              "refresh_interval": "2s",
+              "number_of_shards": "1",
+              "number_of_replicas": "0",
+              "query": {
+                "default_field": [
+                  "agent.host.architecture",
+                  "agent.host.ip",
+                  "agent.id",
+                  "agent.name",
+                  "agent.version",
+                  "host.network.egress.queue",
+                  "host.network.ingress.queue",
+                  "file.inode",
+                  "interface.state",
+                  "network.transport",
+                  "process.name",
+                  "process.pid",
+                  "source.ip",
+                  "destination.ip",
+                  "wazuh.cluster.name",
+                  "wazuh.cluster.node",
+                  "wazuh.schema.version"
+                ]
+              }
+            }
+          },
+          "mappings": {
+            "dynamic": "strict",
+            "date_detection": false,
+            "properties": {
+              "agent": {
+                "properties": {
+                  "host": {
+                    "properties": {
+                      "ip": {
+                        "type": "ip"
+                      },
+                      "architecture": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      }
+                    }
+                  },
+                  "name": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "id": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "version": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  }
+                }
+              },
+              "process": {
+                "properties": {
+                  "name": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "pid": {
+                    "type": "long"
+                  }
+                }
+              },
+              "file": {
+                "properties": {
+                  "inode": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  }
+                }
+              },
+              "destination": {
+                "properties": {
+                  "port": {
+                    "type": "long"
+                  },
+                  "ip": {
+                    "type": "ip"
+                  }
+                }
+              },
+              "host": {
+                "properties": {
+                  "network": {
+                    "properties": {
+                      "ingress": {
+                        "properties": {
+                          "queue": {
+                            "type": "long"
+                          }
+                        }
+                      },
+                      "egress": {
+                        "properties": {
+                          "queue": {
+                            "type": "long"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "wazuh": {
+                "properties": {
+                  "schema": {
+                    "properties": {
+                      "version": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      }
+                    }
+                  },
+                  "cluster": {
+                    "properties": {
+                      "node": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      },
+                      "name": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      }
+                    }
+                  }
+                }
+              },
+              "source": {
+                "properties": {
+                  "port": {
+                    "type": "long"
+                  },
+                  "ip": {
+                    "type": "ip"
+                  }
+                }
+              },
+              "interface": {
+                "properties": {
+                  "state": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  }
+                }
+              },
+              "network": {
+                "properties": {
+                  "transport": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "composed_of": [],
+        "priority": 1
+      }
+    },
+    {
+      "name": "wazuh-alerts-geoip",
+      "index_template": {
+        "index_patterns": [
+          "wazuh-alerts-4.x-*"
+        ],
+        "template": {
+          "settings": {
+            "index": {
+              "default_pipeline": "geoip"
+            }
+          }
+        },
+        "composed_of": [],
+        "priority": 200
+      }
+    },
+    {
+      "name": "wazuh-states-inventory-hotfixes-ip-10-0-1-78_template",
+      "index_template": {
+        "index_patterns": [
+          "wazuh-states-inventory-hotfixes*"
+        ],
+        "template": {
+          "settings": {
+            "index": {
+              "refresh_interval": "2s",
+              "number_of_shards": "1",
+              "number_of_replicas": "0",
+              "query": {
+                "default_field": [
+                  "agent.host.architecture",
+                  "agent.host.ip",
+                  "agent.id",
+                  "agent.name",
+                  "agent.version",
+                  "package.hotfix.name",
+                  "wazuh.cluster.name",
+                  "wazuh.cluster.node",
+                  "wazuh.schema.version"
+                ]
+              }
+            }
+          },
+          "mappings": {
+            "dynamic": "strict",
+            "date_detection": false,
+            "properties": {
+              "agent": {
+                "properties": {
+                  "host": {
+                    "properties": {
+                      "ip": {
+                        "type": "ip"
+                      },
+                      "architecture": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      }
+                    }
+                  },
+                  "name": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "id": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "version": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  }
+                }
+              },
+              "package": {
+                "properties": {
+                  "hotfix": {
+                    "properties": {
+                      "name": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      }
+                    }
+                  }
+                }
+              },
+              "wazuh": {
+                "properties": {
+                  "schema": {
+                    "properties": {
+                      "version": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      }
+                    }
+                  },
+                  "cluster": {
+                    "properties": {
+                      "node": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      },
+                      "name": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "composed_of": [],
+        "priority": 1
+      }
+    },
+    {
+      "name": "wazuh-states-inventory-protocols-ip-10-0-1-78_template",
+      "index_template": {
+        "index_patterns": [
+          "wazuh-states-inventory-protocols*"
+        ],
+        "template": {
+          "settings": {
+            "index": {
+              "refresh_interval": "2s",
+              "number_of_shards": "1",
+              "number_of_replicas": "0",
+              "query": {
+                "default_field": [
+                  "agent.host.architecture",
+                  "agent.host.ip",
+                  "agent.id",
+                  "agent.name",
+                  "agent.version",
+                  "network.type",
+                  "interface.name",
+                  "wazuh.cluster.name",
+                  "wazuh.cluster.node",
+                  "wazuh.schema.version"
+                ]
+              }
+            }
+          },
+          "mappings": {
+            "dynamic": "strict",
+            "date_detection": false,
+            "properties": {
+              "agent": {
+                "properties": {
+                  "host": {
+                    "properties": {
+                      "ip": {
+                        "type": "ip"
+                      },
+                      "architecture": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      }
+                    }
+                  },
+                  "name": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "id": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "version": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  }
+                }
+              },
+              "wazuh": {
+                "properties": {
+                  "schema": {
+                    "properties": {
+                      "version": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      }
+                    }
+                  },
+                  "cluster": {
+                    "properties": {
+                      "node": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      },
+                      "name": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      }
+                    }
+                  }
+                }
+              },
+              "interface": {
+                "properties": {
+                  "name": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  }
+                }
+              },
+              "network": {
+                "properties": {
+                  "metric": {
+                    "type": "long"
+                  },
+                  "type": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "dhcp": {
+                    "type": "boolean"
+                  },
+                  "gateway": {
+                    "type": "ip"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "composed_of": [],
+        "priority": 1
+      }
+    }
+  ]
+}

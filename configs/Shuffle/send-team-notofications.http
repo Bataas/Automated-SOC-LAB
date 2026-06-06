@@ -1,0 +1,57 @@
+{
+  "type": "message",
+  "attachments": [
+    {
+      "contentType": "application/vnd.microsoft.card.adaptive",
+      "content": {
+        "type": "AdaptiveCard",
+        "version": "1.0",
+        "body": [
+          {
+            "type": "TextBlock",
+            "text": "🚨 IRIS Case Created from Wazuh Alert",
+            "weight": "Bolder",
+            "size": "Large",
+            "color": "Attention"
+          },
+          {
+            "type": "TextBlock",
+            "text": "Security logs received from Wazuh were automatically processed by Shuffle SOAR and a new IRIS investigation case has been created.",
+            "wrap": true
+          },
+          {
+            "type": "FactSet",
+            "facts": [
+              {
+                "title": "Case ID",
+                "value": "$create_new_iris_case.body.data.case_id"
+              },
+              {
+                "title": "Severity",
+                "value": "$build_soc_context.message.severity"
+              },
+              {
+                "title": "Host",
+                "value": "$build_soc_context.message.host_context.hostname"
+              },
+              {
+                "title": "User",
+                "value": "$build_soc_context.message.user_context.username"
+              },
+              {
+                "title": "Source IP",
+                "value": "$build_soc_context.message.network_iocs.src_ip"
+              }
+            ]
+          },
+          {
+            "type": "TextBlock",
+            "text": "$build_soc_context.message.case_title",
+            "wrap": true,
+            "weight": "Bolder"
+          }
+        ]
+      }
+    }
+  ]
+}

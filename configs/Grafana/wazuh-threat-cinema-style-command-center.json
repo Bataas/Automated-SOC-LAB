@@ -1,0 +1,2407 @@
+{
+  "annotations": [
+    {
+      "kind": "AnnotationQuery",
+      "spec": {
+        "builtIn": true,
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "query": {
+          "datasource": {
+            "name": "-- Grafana --"
+          },
+          "group": "grafana",
+          "kind": "DataQuery",
+          "spec": {},
+          "version": "v0"
+        }
+      }
+    }
+  ],
+  "cursorSync": "Crosshair",
+  "editable": true,
+  "elements": {
+    "panel-1": {
+      "kind": "Panel",
+      "spec": {
+        "data": {
+          "kind": "QueryGroup",
+          "spec": {
+            "queries": [],
+            "queryOptions": {},
+            "transformations": []
+          }
+        },
+        "description": "",
+        "id": 1,
+        "links": [],
+        "title": "🎬 WAZUH: Threat Cinema Command Center",
+        "vizConfig": {
+          "group": "text",
+          "kind": "VizConfig",
+          "spec": {
+            "fieldConfig": {
+              "defaults": {},
+              "overrides": []
+            },
+            "options": {
+              "code": {
+                "language": "plaintext",
+                "showLineNumbers": false,
+                "showMiniMap": false
+              },
+              "content": "# 🎬 WAZUH: Threat Cinema Command Center\n**Live SOC movie board** — attack origins, top villains, critical alerts, MITRE moves, agents, and authentication drama.\n\n> Built from your Wazuh/OpenSearch geomap example and expanded into a full cinematic dashboard.",
+              "mode": "markdown"
+            }
+          },
+          "version": "13.0.1"
+        }
+      }
+    },
+    "panel-10": {
+      "kind": "Panel",
+      "spec": {
+        "data": {
+          "kind": "QueryGroup",
+          "spec": {
+            "queries": [
+              {
+                "kind": "PanelQuery",
+                "spec": {
+                  "hidden": false,
+                  "query": {
+                    "datasource": {
+                      "name": "bfjnyfqqh8q9sc"
+                    },
+                    "group": "grafana-opensearch-datasource",
+                    "kind": "DataQuery",
+                    "spec": {
+                      "alias": "",
+                      "bucketAggs": [
+                        {
+                          "field": "GeoLocation.country_name.keyword",
+                          "id": "4",
+                          "settings": {
+                            "min_doc_count": "1",
+                            "order": "desc",
+                            "orderBy": "1",
+                            "size": "50"
+                          },
+                          "type": "terms"
+                        }
+                      ],
+                      "index": "wazuh-alerts-4.x-*",
+                      "luceneQueryType": "Metric",
+                      "metrics": [
+                        {
+                          "id": "1",
+                          "type": "count"
+                        },
+                        {
+                          "field": "GeoLocation.location.lat",
+                          "id": "2",
+                          "settings": {},
+                          "type": "avg"
+                        },
+                        {
+                          "field": "GeoLocation.location.lon",
+                          "id": "3",
+                          "settings": {},
+                          "type": "avg"
+                        }
+                      ],
+                      "query": "data.srcip:*",
+                      "queryType": "lucene",
+                      "timeField": "@timestamp"
+                    },
+                    "version": "v0"
+                  },
+                  "refId": "A"
+                }
+              }
+            ],
+            "queryOptions": {},
+            "transformations": [
+              {
+                "group": "organize",
+                "kind": "Transformation",
+                "spec": {
+                  "options": {
+                    "renameByName": {
+                      "Average GeoLocation.location.lat": "lat",
+                      "Average GeoLocation.location.lon": "lon",
+                      "Count": "Count",
+                      "GeoLocation.country_name.keyword": "country"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "description": "",
+        "id": 10,
+        "links": [],
+        "title": "🌍 World Map — Attack Origins",
+        "vizConfig": {
+          "group": "geomap",
+          "kind": "VizConfig",
+          "spec": {
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "thresholds"
+                },
+                "custom": {
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  }
+                },
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "#73BF69",
+                      "value": 0
+                    },
+                    {
+                      "color": "#FADE2A",
+                      "value": 10
+                    },
+                    {
+                      "color": "#FF780A",
+                      "value": 50
+                    },
+                    {
+                      "color": "#E24B4A",
+                      "value": 200
+                    }
+                  ]
+                },
+                "unit": "short"
+              },
+              "overrides": []
+            },
+            "options": {
+              "basemap": {
+                "config": {},
+                "name": "Basemap",
+                "type": "default"
+              },
+              "controls": {
+                "mouseWheelZoom": true,
+                "showAttribution": true,
+                "showDebug": false,
+                "showMeasure": false,
+                "showScale": false,
+                "showZoom": true
+              },
+              "layers": [
+                {
+                  "config": {
+                    "color": {
+                      "field": "Count",
+                      "fixed": "#E24B4A"
+                    },
+                    "fillOpacity": 0.8,
+                    "showLegend": true,
+                    "size": {
+                      "field": "Count",
+                      "fixed": 5,
+                      "max": 35,
+                      "min": 3
+                    },
+                    "symbol": {
+                      "fixed": "img/icons/marker/circle.svg",
+                      "mode": "fixed"
+                    },
+                    "tooltip": true
+                  },
+                  "location": {
+                    "latitude": "lat",
+                    "longitude": "lon",
+                    "mode": "coords"
+                  },
+                  "name": "Attack Origins",
+                  "tooltip": true,
+                  "type": "markers"
+                }
+              ],
+              "tooltip": {
+                "mode": "details"
+              },
+              "view": {
+                "allLayers": true,
+                "dashboardVariable": false,
+                "id": "zero",
+                "lat": 20,
+                "lon": 0,
+                "noRepeat": false,
+                "zoom": 2
+              }
+            }
+          },
+          "version": "13.0.1"
+        }
+      }
+    },
+    "panel-11": {
+      "kind": "Panel",
+      "spec": {
+        "data": {
+          "kind": "QueryGroup",
+          "spec": {
+            "queries": [
+              {
+                "kind": "PanelQuery",
+                "spec": {
+                  "hidden": false,
+                  "query": {
+                    "datasource": {
+                      "name": "bfjnyfqqh8q9sc"
+                    },
+                    "group": "grafana-opensearch-datasource",
+                    "kind": "DataQuery",
+                    "spec": {
+                      "alias": "",
+                      "bucketAggs": [
+                        {
+                          "field": "GeoLocation.country_name.keyword",
+                          "id": "2",
+                          "settings": {
+                            "min_doc_count": "1",
+                            "order": "desc",
+                            "orderBy": "1",
+                            "size": "10"
+                          },
+                          "type": "terms"
+                        }
+                      ],
+                      "index": "wazuh-alerts-4.x-*",
+                      "luceneQueryType": "Metric",
+                      "metrics": [
+                        {
+                          "id": "1",
+                          "type": "count"
+                        }
+                      ],
+                      "query": "data.srcip:*",
+                      "queryType": "lucene",
+                      "timeField": "@timestamp"
+                    },
+                    "version": "v0"
+                  },
+                  "refId": "A"
+                }
+              }
+            ],
+            "queryOptions": {},
+            "transformations": []
+          }
+        },
+        "description": "",
+        "id": 11,
+        "links": [],
+        "title": "🎭 Top Attacking Countries",
+        "vizConfig": {
+          "group": "table",
+          "kind": "VizConfig",
+          "spec": {
+            "fieldConfig": {
+              "defaults": {
+                "custom": {
+                  "align": "auto",
+                  "cellOptions": {
+                    "type": "auto"
+                  },
+                  "footer": {
+                    "reducers": []
+                  },
+                  "inspect": false
+                },
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": 0
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                }
+              },
+              "overrides": []
+            },
+            "options": {
+              "cellHeight": "sm",
+              "showHeader": true
+            }
+          },
+          "version": "13.0.1"
+        }
+      }
+    },
+    "panel-12": {
+      "kind": "Panel",
+      "spec": {
+        "data": {
+          "kind": "QueryGroup",
+          "spec": {
+            "queries": [
+              {
+                "kind": "PanelQuery",
+                "spec": {
+                  "hidden": false,
+                  "query": {
+                    "datasource": {
+                      "name": "bfjnyfqqh8q9sc"
+                    },
+                    "group": "grafana-opensearch-datasource",
+                    "kind": "DataQuery",
+                    "spec": {
+                      "alias": "",
+                      "bucketAggs": [
+                        {
+                          "field": "data.srcip.keyword",
+                          "id": "2",
+                          "settings": {
+                            "min_doc_count": "1",
+                            "order": "desc",
+                            "orderBy": "1",
+                            "size": "15"
+                          },
+                          "type": "terms"
+                        }
+                      ],
+                      "index": "wazuh-alerts-4.x-*",
+                      "luceneQueryType": "Metric",
+                      "metrics": [
+                        {
+                          "id": "1",
+                          "type": "count"
+                        }
+                      ],
+                      "query": "data.srcip:*",
+                      "queryType": "lucene",
+                      "timeField": "@timestamp"
+                    },
+                    "version": "v0"
+                  },
+                  "refId": "A"
+                }
+              }
+            ],
+            "queryOptions": {},
+            "transformations": []
+          }
+        },
+        "description": "",
+        "id": 12,
+        "links": [],
+        "title": "🦹 Top Source IPs",
+        "vizConfig": {
+          "group": "table",
+          "kind": "VizConfig",
+          "spec": {
+            "fieldConfig": {
+              "defaults": {
+                "custom": {
+                  "align": "auto",
+                  "cellOptions": {
+                    "type": "auto"
+                  },
+                  "footer": {
+                    "reducers": []
+                  },
+                  "inspect": false
+                },
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": 0
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                }
+              },
+              "overrides": []
+            },
+            "options": {
+              "cellHeight": "sm",
+              "showHeader": true
+            }
+          },
+          "version": "13.0.1"
+        }
+      }
+    },
+    "panel-13": {
+      "kind": "Panel",
+      "spec": {
+        "data": {
+          "kind": "QueryGroup",
+          "spec": {
+            "queries": [
+              {
+                "kind": "PanelQuery",
+                "spec": {
+                  "hidden": false,
+                  "query": {
+                    "datasource": {
+                      "name": "bfjnyfqqh8q9sc"
+                    },
+                    "group": "grafana-opensearch-datasource",
+                    "kind": "DataQuery",
+                    "spec": {
+                      "alias": "",
+                      "bucketAggs": [
+                        {
+                          "field": "rule.description.keyword",
+                          "id": "2",
+                          "settings": {
+                            "min_doc_count": "1",
+                            "order": "desc",
+                            "orderBy": "1",
+                            "size": "12"
+                          },
+                          "type": "terms"
+                        }
+                      ],
+                      "index": "wazuh-alerts-4.x-*",
+                      "luceneQueryType": "Metric",
+                      "metrics": [
+                        {
+                          "id": "1",
+                          "type": "count"
+                        }
+                      ],
+                      "query": "*",
+                      "queryType": "lucene",
+                      "timeField": "@timestamp"
+                    },
+                    "version": "v0"
+                  },
+                  "refId": "A"
+                }
+              }
+            ],
+            "queryOptions": {},
+            "transformations": []
+          }
+        },
+        "description": "",
+        "id": 13,
+        "links": [],
+        "title": "🎬 Top Rules Triggered",
+        "vizConfig": {
+          "group": "table",
+          "kind": "VizConfig",
+          "spec": {
+            "fieldConfig": {
+              "defaults": {
+                "custom": {
+                  "align": "auto",
+                  "cellOptions": {
+                    "type": "auto"
+                  },
+                  "footer": {
+                    "reducers": []
+                  },
+                  "inspect": false
+                },
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": 0
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                }
+              },
+              "overrides": []
+            },
+            "options": {
+              "cellHeight": "sm",
+              "showHeader": true
+            }
+          },
+          "version": "13.0.1"
+        }
+      }
+    },
+    "panel-14": {
+      "kind": "Panel",
+      "spec": {
+        "data": {
+          "kind": "QueryGroup",
+          "spec": {
+            "queries": [
+              {
+                "kind": "PanelQuery",
+                "spec": {
+                  "hidden": false,
+                  "query": {
+                    "datasource": {
+                      "name": "bfjnyfqqh8q9sc"
+                    },
+                    "group": "grafana-opensearch-datasource",
+                    "kind": "DataQuery",
+                    "spec": {
+                      "alias": "",
+                      "bucketAggs": [
+                        {
+                          "field": "rule.mitre.id.keyword",
+                          "id": "2",
+                          "settings": {
+                            "min_doc_count": "1",
+                            "order": "desc",
+                            "orderBy": "1",
+                            "size": "12"
+                          },
+                          "type": "terms"
+                        }
+                      ],
+                      "index": "wazuh-alerts-4.x-*",
+                      "luceneQueryType": "Metric",
+                      "metrics": [
+                        {
+                          "id": "1",
+                          "type": "count"
+                        }
+                      ],
+                      "query": "rule.mitre.id:*",
+                      "queryType": "lucene",
+                      "timeField": "@timestamp"
+                    },
+                    "version": "v0"
+                  },
+                  "refId": "A"
+                }
+              }
+            ],
+            "queryOptions": {},
+            "transformations": []
+          }
+        },
+        "description": "",
+        "id": 14,
+        "links": [],
+        "title": "🧬 MITRE Techniques",
+        "vizConfig": {
+          "group": "table",
+          "kind": "VizConfig",
+          "spec": {
+            "fieldConfig": {
+              "defaults": {
+                "custom": {
+                  "align": "auto",
+                  "cellOptions": {
+                    "type": "auto"
+                  },
+                  "footer": {
+                    "reducers": []
+                  },
+                  "inspect": false
+                },
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": 0
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                }
+              },
+              "overrides": []
+            },
+            "options": {
+              "cellHeight": "sm",
+              "showHeader": true
+            }
+          },
+          "version": "13.0.1"
+        }
+      }
+    },
+    "panel-15": {
+      "kind": "Panel",
+      "spec": {
+        "data": {
+          "kind": "QueryGroup",
+          "spec": {
+            "queries": [
+              {
+                "kind": "PanelQuery",
+                "spec": {
+                  "hidden": false,
+                  "query": {
+                    "datasource": {
+                      "name": "bfjnyfqqh8q9sc"
+                    },
+                    "group": "grafana-opensearch-datasource",
+                    "kind": "DataQuery",
+                    "spec": {
+                      "alias": "",
+                      "bucketAggs": [
+                        {
+                          "field": "agent.name.keyword",
+                          "id": "2",
+                          "settings": {
+                            "min_doc_count": "1",
+                            "order": "desc",
+                            "orderBy": "1",
+                            "size": "12"
+                          },
+                          "type": "terms"
+                        }
+                      ],
+                      "index": "wazuh-alerts-4.x-*",
+                      "luceneQueryType": "Metric",
+                      "metrics": [
+                        {
+                          "id": "1",
+                          "type": "count"
+                        }
+                      ],
+                      "query": "agent.name:*",
+                      "queryType": "lucene",
+                      "timeField": "@timestamp"
+                    },
+                    "version": "v0"
+                  },
+                  "refId": "A"
+                }
+              }
+            ],
+            "queryOptions": {},
+            "transformations": []
+          }
+        },
+        "description": "",
+        "id": 15,
+        "links": [],
+        "title": "🖥️ Noisiest Agents",
+        "vizConfig": {
+          "group": "table",
+          "kind": "VizConfig",
+          "spec": {
+            "fieldConfig": {
+              "defaults": {
+                "custom": {
+                  "align": "auto",
+                  "cellOptions": {
+                    "type": "auto"
+                  },
+                  "footer": {
+                    "reducers": []
+                  },
+                  "inspect": false
+                },
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": 0
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                }
+              },
+              "overrides": []
+            },
+            "options": {
+              "cellHeight": "sm",
+              "showHeader": true
+            }
+          },
+          "version": "13.0.1"
+        }
+      }
+    },
+    "panel-16": {
+      "kind": "Panel",
+      "spec": {
+        "data": {
+          "kind": "QueryGroup",
+          "spec": {
+            "queries": [
+              {
+                "kind": "PanelQuery",
+                "spec": {
+                  "hidden": false,
+                  "query": {
+                    "datasource": {
+                      "name": "bfjnyfqqh8q9sc"
+                    },
+                    "group": "grafana-opensearch-datasource",
+                    "kind": "DataQuery",
+                    "spec": {
+                      "alias": "",
+                      "bucketAggs": [
+                        {
+                          "field": "data.dstuser.keyword",
+                          "id": "2",
+                          "settings": {
+                            "min_doc_count": "1",
+                            "order": "desc",
+                            "orderBy": "1",
+                            "size": "12"
+                          },
+                          "type": "terms"
+                        }
+                      ],
+                      "index": "wazuh-alerts-4.x-*",
+                      "luceneQueryType": "Metric",
+                      "metrics": [
+                        {
+                          "id": "1",
+                          "type": "count"
+                        }
+                      ],
+                      "query": "rule.groups:authentication_failed OR rule.description:*failed*login*",
+                      "queryType": "lucene",
+                      "timeField": "@timestamp"
+                    },
+                    "version": "v0"
+                  },
+                  "refId": "A"
+                }
+              }
+            ],
+            "queryOptions": {},
+            "transformations": []
+          }
+        },
+        "description": "",
+        "id": 16,
+        "links": [],
+        "title": "🚪 Authentication Drama",
+        "vizConfig": {
+          "group": "table",
+          "kind": "VizConfig",
+          "spec": {
+            "fieldConfig": {
+              "defaults": {
+                "custom": {
+                  "align": "auto",
+                  "cellOptions": {
+                    "type": "auto"
+                  },
+                  "footer": {
+                    "reducers": []
+                  },
+                  "inspect": false
+                },
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": 0
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                }
+              },
+              "overrides": []
+            },
+            "options": {
+              "cellHeight": "sm",
+              "showHeader": true
+            }
+          },
+          "version": "13.0.1"
+        }
+      }
+    },
+    "panel-17": {
+      "kind": "Panel",
+      "spec": {
+        "data": {
+          "kind": "QueryGroup",
+          "spec": {
+            "queries": [
+              {
+                "kind": "PanelQuery",
+                "spec": {
+                  "hidden": false,
+                  "query": {
+                    "datasource": {
+                      "name": "bfjnyfqqh8q9sc"
+                    },
+                    "group": "grafana-opensearch-datasource",
+                    "kind": "DataQuery",
+                    "spec": {
+                      "alias": "",
+                      "bucketAggs": [
+                        {
+                          "field": "data.url.keyword",
+                          "id": "2",
+                          "settings": {
+                            "min_doc_count": "1",
+                            "order": "desc",
+                            "orderBy": "1",
+                            "size": "12"
+                          },
+                          "type": "terms"
+                        }
+                      ],
+                      "index": "wazuh-alerts-4.x-*",
+                      "luceneQueryType": "Metric",
+                      "metrics": [
+                        {
+                          "id": "1",
+                          "type": "count"
+                        }
+                      ],
+                      "query": "data.url:* OR full_log:*GET* OR full_log:*POST*",
+                      "queryType": "lucene",
+                      "timeField": "@timestamp"
+                    },
+                    "version": "v0"
+                  },
+                  "refId": "A"
+                }
+              }
+            ],
+            "queryOptions": {},
+            "transformations": []
+          }
+        },
+        "description": "",
+        "id": 17,
+        "links": [],
+        "title": "🌐 Web Attack Requests",
+        "vizConfig": {
+          "group": "table",
+          "kind": "VizConfig",
+          "spec": {
+            "fieldConfig": {
+              "defaults": {
+                "custom": {
+                  "align": "auto",
+                  "cellOptions": {
+                    "type": "auto"
+                  },
+                  "footer": {
+                    "reducers": []
+                  },
+                  "inspect": false
+                },
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": 0
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                }
+              },
+              "overrides": []
+            },
+            "options": {
+              "cellHeight": "sm",
+              "showHeader": true
+            }
+          },
+          "version": "13.0.1"
+        }
+      }
+    },
+    "panel-18": {
+      "kind": "Panel",
+      "spec": {
+        "data": {
+          "kind": "QueryGroup",
+          "spec": {
+            "queries": [
+              {
+                "kind": "PanelQuery",
+                "spec": {
+                  "hidden": false,
+                  "query": {
+                    "datasource": {
+                      "name": "bfjnyfqqh8q9sc"
+                    },
+                    "group": "grafana-opensearch-datasource",
+                    "kind": "DataQuery",
+                    "spec": {
+                      "alias": "",
+                      "bucketAggs": [
+                        {
+                          "field": "rule.groups.keyword",
+                          "id": "2",
+                          "settings": {
+                            "min_doc_count": "1",
+                            "order": "desc",
+                            "orderBy": "1",
+                            "size": "12"
+                          },
+                          "type": "terms"
+                        }
+                      ],
+                      "index": "wazuh-alerts-4.x-*",
+                      "luceneQueryType": "Metric",
+                      "metrics": [
+                        {
+                          "id": "1",
+                          "type": "count"
+                        }
+                      ],
+                      "query": "rule.groups:*",
+                      "queryType": "lucene",
+                      "timeField": "@timestamp"
+                    },
+                    "version": "v0"
+                  },
+                  "refId": "A"
+                }
+              }
+            ],
+            "queryOptions": {},
+            "transformations": []
+          }
+        },
+        "description": "",
+        "id": 18,
+        "links": [],
+        "title": "⚔️ Rule Groups",
+        "vizConfig": {
+          "group": "table",
+          "kind": "VizConfig",
+          "spec": {
+            "fieldConfig": {
+              "defaults": {
+                "custom": {
+                  "align": "auto",
+                  "cellOptions": {
+                    "type": "auto"
+                  },
+                  "footer": {
+                    "reducers": []
+                  },
+                  "inspect": false
+                },
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": 0
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                }
+              },
+              "overrides": []
+            },
+            "options": {
+              "cellHeight": "sm",
+              "showHeader": true
+            }
+          },
+          "version": "13.0.1"
+        }
+      }
+    },
+    "panel-19": {
+      "kind": "Panel",
+      "spec": {
+        "data": {
+          "kind": "QueryGroup",
+          "spec": {
+            "queries": [
+              {
+                "kind": "PanelQuery",
+                "spec": {
+                  "hidden": false,
+                  "query": {
+                    "datasource": {
+                      "name": "bfjnyfqqh8q9sc"
+                    },
+                    "group": "grafana-opensearch-datasource",
+                    "kind": "DataQuery",
+                    "spec": {
+                      "alias": "",
+                      "bucketAggs": [
+                        {
+                          "field": "@timestamp",
+                          "id": "2",
+                          "settings": {
+                            "interval": "auto"
+                          },
+                          "type": "date_histogram"
+                        }
+                      ],
+                      "format": "table",
+                      "luceneQueryType": "Metric",
+                      "metrics": [
+                        {
+                          "id": "1",
+                          "type": "count"
+                        }
+                      ],
+                      "query": "",
+                      "queryType": "lucene",
+                      "timeField": "@timestamp"
+                    },
+                    "version": "v0"
+                  },
+                  "refId": "B"
+                }
+              }
+            ],
+            "queryOptions": {},
+            "transformations": []
+          }
+        },
+        "description": "",
+        "id": 19,
+        "links": [],
+        "title": "📜 Latest Alert Scene Log",
+        "vizConfig": {
+          "group": "timeseries",
+          "kind": "VizConfig",
+          "spec": {
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "thresholds"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "barWidthFactor": 0.6,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "insertNulls": false,
+                  "lineInterpolation": "linear",
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "showValues": false,
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": 0
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                }
+              },
+              "overrides": []
+            },
+            "options": {
+              "annotations": {
+                "clustering": -1,
+                "multiLane": false
+              },
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "hideZeros": false,
+                "mode": "single",
+                "sort": "none"
+              }
+            }
+          },
+          "version": "13.0.1"
+        }
+      }
+    },
+    "panel-2": {
+      "kind": "Panel",
+      "spec": {
+        "data": {
+          "kind": "QueryGroup",
+          "spec": {
+            "queries": [
+              {
+                "kind": "PanelQuery",
+                "spec": {
+                  "hidden": false,
+                  "query": {
+                    "datasource": {
+                      "name": "bfjnyfqqh8q9sc"
+                    },
+                    "group": "grafana-opensearch-datasource",
+                    "kind": "DataQuery",
+                    "spec": {
+                      "alias": "",
+                      "bucketAggs": [
+                        {
+                          "field": "@timestamp",
+                          "id": "1",
+                          "settings": {
+                            "interval": "auto"
+                          },
+                          "type": "date_histogram"
+                        }
+                      ],
+                      "index": "wazuh-alerts-4.x-*",
+                      "luceneQueryType": "Metric",
+                      "metrics": [
+                        {
+                          "id": "1",
+                          "type": "count"
+                        }
+                      ],
+                      "query": "",
+                      "queryType": "lucene",
+                      "timeField": "@timestamp"
+                    },
+                    "version": "v0"
+                  },
+                  "refId": "A"
+                }
+              }
+            ],
+            "queryOptions": {},
+            "transformations": []
+          }
+        },
+        "description": "",
+        "id": 2,
+        "links": [],
+        "title": "🚨 Total Alerts",
+        "vizConfig": {
+          "group": "stat",
+          "kind": "VizConfig",
+          "spec": {
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "thresholds"
+                },
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "#299c46",
+                      "value": 0
+                    },
+                    {
+                      "color": "#f2cc0c",
+                      "value": 50
+                    },
+                    {
+                      "color": "#d44a3a",
+                      "value": 200
+                    }
+                  ]
+                },
+                "unit": "short"
+              },
+              "overrides": []
+            },
+            "options": {
+              "colorMode": "background",
+              "graphMode": "area",
+              "justifyMode": "center",
+              "orientation": "auto",
+              "percentChangeColorMode": "standard",
+              "reduceOptions": {
+                "calcs": [
+                  "lastNotNull"
+                ],
+                "fields": "",
+                "values": false
+              },
+              "showPercentChange": false,
+              "textMode": "auto",
+              "wideLayout": true
+            }
+          },
+          "version": "13.0.1"
+        }
+      }
+    },
+    "panel-3": {
+      "kind": "Panel",
+      "spec": {
+        "data": {
+          "kind": "QueryGroup",
+          "spec": {
+            "queries": [
+              {
+                "kind": "PanelQuery",
+                "spec": {
+                  "hidden": false,
+                  "query": {
+                    "datasource": {
+                      "name": "bfjnyfqqh8q9sc"
+                    },
+                    "group": "grafana-opensearch-datasource",
+                    "kind": "DataQuery",
+                    "spec": {
+                      "alias": "",
+                      "bucketAggs": [
+                        {
+                          "field": "@timestamp",
+                          "id": "2",
+                          "settings": {
+                            "interval": "auto"
+                          },
+                          "type": "date_histogram"
+                        }
+                      ],
+                      "format": "table",
+                      "luceneQueryType": "Metric",
+                      "metrics": [
+                        {
+                          "id": "1",
+                          "type": "count"
+                        }
+                      ],
+                      "query": "rule.level:[10 TO *]",
+                      "queryType": "lucene",
+                      "timeField": "@timestamp"
+                    },
+                    "version": "v0"
+                  },
+                  "refId": "B"
+                }
+              }
+            ],
+            "queryOptions": {},
+            "transformations": []
+          }
+        },
+        "description": "",
+        "id": 3,
+        "links": [],
+        "title": "🔥 Critical / High",
+        "vizConfig": {
+          "group": "stat",
+          "kind": "VizConfig",
+          "spec": {
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "thresholds"
+                },
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "#299c46",
+                      "value": 0
+                    },
+                    {
+                      "color": "#f2cc0c",
+                      "value": 10
+                    },
+                    {
+                      "color": "#d44a3a",
+                      "value": 50
+                    }
+                  ]
+                },
+                "unit": "short"
+              },
+              "overrides": []
+            },
+            "options": {
+              "colorMode": "background",
+              "graphMode": "area",
+              "justifyMode": "center",
+              "orientation": "auto",
+              "percentChangeColorMode": "standard",
+              "reduceOptions": {
+                "calcs": [
+                  "lastNotNull"
+                ],
+                "fields": "",
+                "values": false
+              },
+              "showPercentChange": false,
+              "textMode": "auto",
+              "wideLayout": true
+            }
+          },
+          "version": "13.0.1"
+        }
+      }
+    },
+    "panel-4": {
+      "kind": "Panel",
+      "spec": {
+        "data": {
+          "kind": "QueryGroup",
+          "spec": {
+            "queries": [
+              {
+                "kind": "PanelQuery",
+                "spec": {
+                  "hidden": false,
+                  "query": {
+                    "datasource": {
+                      "name": "bfjnyfqqh8q9sc"
+                    },
+                    "group": "grafana-opensearch-datasource",
+                    "kind": "DataQuery",
+                    "spec": {
+                      "alias": "",
+                      "bucketAggs": [],
+                      "index": "wazuh-alerts-4.x-*",
+                      "luceneQueryType": "Metric",
+                      "metrics": [
+                        {
+                          "id": "1",
+                          "type": "count"
+                        }
+                      ],
+                      "query": "rule.groups:authentication_failed OR rule.description:*failed*login*",
+                      "queryType": "lucene",
+                      "timeField": "@timestamp"
+                    },
+                    "version": "v0"
+                  },
+                  "refId": "A"
+                }
+              }
+            ],
+            "queryOptions": {},
+            "transformations": []
+          }
+        },
+        "description": "",
+        "id": 4,
+        "links": [],
+        "title": "🧨 Auth Failures",
+        "vizConfig": {
+          "group": "stat",
+          "kind": "VizConfig",
+          "spec": {
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "thresholds"
+                },
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "#299c46",
+                      "value": 0
+                    },
+                    {
+                      "color": "#f2cc0c",
+                      "value": 50
+                    },
+                    {
+                      "color": "#d44a3a",
+                      "value": 200
+                    }
+                  ]
+                },
+                "unit": "short"
+              },
+              "overrides": []
+            },
+            "options": {
+              "colorMode": "background",
+              "graphMode": "area",
+              "justifyMode": "center",
+              "orientation": "auto",
+              "percentChangeColorMode": "standard",
+              "reduceOptions": {
+                "calcs": [
+                  "lastNotNull"
+                ],
+                "fields": "",
+                "values": false
+              },
+              "showPercentChange": false,
+              "textMode": "auto",
+              "wideLayout": true
+            }
+          },
+          "version": "13.0.1"
+        }
+      }
+    },
+    "panel-5": {
+      "kind": "Panel",
+      "spec": {
+        "data": {
+          "kind": "QueryGroup",
+          "spec": {
+            "queries": [
+              {
+                "kind": "PanelQuery",
+                "spec": {
+                  "hidden": false,
+                  "query": {
+                    "datasource": {
+                      "name": "bfjnyfqqh8q9sc"
+                    },
+                    "group": "grafana-opensearch-datasource",
+                    "kind": "DataQuery",
+                    "spec": {
+                      "alias": "",
+                      "bucketAggs": [],
+                      "index": "wazuh-alerts-4.x-*",
+                      "luceneQueryType": "Metric",
+                      "metrics": [
+                        {
+                          "id": "1",
+                          "type": "count"
+                        }
+                      ],
+                      "query": "data.srcip:* AND NOT data.srcip:192.168.* AND NOT data.srcip:10.* AND NOT data.srcip:172.16.*",
+                      "queryType": "lucene",
+                      "timeField": "@timestamp"
+                    },
+                    "version": "v0"
+                  },
+                  "refId": "A"
+                }
+              }
+            ],
+            "queryOptions": {},
+            "transformations": []
+          }
+        },
+        "description": "",
+        "id": 5,
+        "links": [],
+        "title": "🌍 External IP Events",
+        "vizConfig": {
+          "group": "stat",
+          "kind": "VizConfig",
+          "spec": {
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "thresholds"
+                },
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "#299c46",
+                      "value": 0
+                    },
+                    {
+                      "color": "#f2cc0c",
+                      "value": 50
+                    },
+                    {
+                      "color": "#d44a3a",
+                      "value": 200
+                    }
+                  ]
+                },
+                "unit": "short"
+              },
+              "overrides": []
+            },
+            "options": {
+              "colorMode": "background",
+              "graphMode": "area",
+              "justifyMode": "center",
+              "orientation": "auto",
+              "percentChangeColorMode": "standard",
+              "reduceOptions": {
+                "calcs": [
+                  "lastNotNull"
+                ],
+                "fields": "",
+                "values": false
+              },
+              "showPercentChange": false,
+              "textMode": "auto",
+              "wideLayout": true
+            }
+          },
+          "version": "13.0.1"
+        }
+      }
+    },
+    "panel-6": {
+      "kind": "Panel",
+      "spec": {
+        "data": {
+          "kind": "QueryGroup",
+          "spec": {
+            "queries": [
+              {
+                "kind": "PanelQuery",
+                "spec": {
+                  "hidden": false,
+                  "query": {
+                    "datasource": {
+                      "name": "bfjnyfqqh8q9sc"
+                    },
+                    "group": "grafana-opensearch-datasource",
+                    "kind": "DataQuery",
+                    "spec": {
+                      "alias": "",
+                      "bucketAggs": [],
+                      "index": "wazuh-alerts-4.x-*",
+                      "luceneQueryType": "Metric",
+                      "metrics": [
+                        {
+                          "id": "1",
+                          "type": "count"
+                        }
+                      ],
+                      "query": "agent.name:*",
+                      "queryType": "lucene",
+                      "timeField": "@timestamp"
+                    },
+                    "version": "v0"
+                  },
+                  "refId": "A"
+                }
+              }
+            ],
+            "queryOptions": {},
+            "transformations": []
+          }
+        },
+        "description": "",
+        "id": 6,
+        "links": [],
+        "title": "🖥️ Active Agents",
+        "vizConfig": {
+          "group": "stat",
+          "kind": "VizConfig",
+          "spec": {
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "thresholds"
+                },
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "#299c46",
+                      "value": 0
+                    },
+                    {
+                      "color": "#f2cc0c",
+                      "value": 50
+                    },
+                    {
+                      "color": "#d44a3a",
+                      "value": 200
+                    }
+                  ]
+                },
+                "unit": "short"
+              },
+              "overrides": []
+            },
+            "options": {
+              "colorMode": "background",
+              "graphMode": "area",
+              "justifyMode": "center",
+              "orientation": "auto",
+              "percentChangeColorMode": "standard",
+              "reduceOptions": {
+                "calcs": [
+                  "lastNotNull"
+                ],
+                "fields": "",
+                "values": false
+              },
+              "showPercentChange": false,
+              "textMode": "auto",
+              "wideLayout": true
+            }
+          },
+          "version": "13.0.1"
+        }
+      }
+    },
+    "panel-7": {
+      "kind": "Panel",
+      "spec": {
+        "data": {
+          "kind": "QueryGroup",
+          "spec": {
+            "queries": [
+              {
+                "kind": "PanelQuery",
+                "spec": {
+                  "hidden": false,
+                  "query": {
+                    "datasource": {
+                      "name": "bfjnyfqqh8q9sc"
+                    },
+                    "group": "grafana-opensearch-datasource",
+                    "kind": "DataQuery",
+                    "spec": {
+                      "alias": "",
+                      "bucketAggs": [],
+                      "index": "wazuh-alerts-4.x-*",
+                      "luceneQueryType": "Metric",
+                      "metrics": [
+                        {
+                          "id": "1",
+                          "type": "count"
+                        }
+                      ],
+                      "query": "rule.mitre.id:*",
+                      "queryType": "lucene",
+                      "timeField": "@timestamp"
+                    },
+                    "version": "v0"
+                  },
+                  "refId": "A"
+                }
+              }
+            ],
+            "queryOptions": {},
+            "transformations": []
+          }
+        },
+        "description": "",
+        "id": 7,
+        "links": [],
+        "title": "🎯 MITRE Tagged",
+        "vizConfig": {
+          "group": "stat",
+          "kind": "VizConfig",
+          "spec": {
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "thresholds"
+                },
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "#299c46",
+                      "value": 0
+                    },
+                    {
+                      "color": "#f2cc0c",
+                      "value": 50
+                    },
+                    {
+                      "color": "#d44a3a",
+                      "value": 200
+                    }
+                  ]
+                },
+                "unit": "short"
+              },
+              "overrides": []
+            },
+            "options": {
+              "colorMode": "background",
+              "graphMode": "area",
+              "justifyMode": "center",
+              "orientation": "auto",
+              "percentChangeColorMode": "standard",
+              "reduceOptions": {
+                "calcs": [
+                  "lastNotNull"
+                ],
+                "fields": "",
+                "values": false
+              },
+              "showPercentChange": false,
+              "textMode": "auto",
+              "wideLayout": true
+            }
+          },
+          "version": "13.0.1"
+        }
+      }
+    },
+    "panel-8": {
+      "kind": "Panel",
+      "spec": {
+        "data": {
+          "kind": "QueryGroup",
+          "spec": {
+            "queries": [
+              {
+                "kind": "PanelQuery",
+                "spec": {
+                  "hidden": false,
+                  "query": {
+                    "datasource": {
+                      "name": "bfjnyfqqh8q9sc"
+                    },
+                    "group": "grafana-opensearch-datasource",
+                    "kind": "DataQuery",
+                    "spec": {
+                      "alias": "",
+                      "bucketAggs": [
+                        {
+                          "field": "@timestamp",
+                          "id": "2",
+                          "settings": {
+                            "interval": "5m",
+                            "min_doc_count": "0",
+                            "trimEdges": "0"
+                          },
+                          "type": "date_histogram"
+                        }
+                      ],
+                      "index": "wazuh-alerts-4.x-*",
+                      "luceneQueryType": "Metric",
+                      "metrics": [
+                        {
+                          "id": "1",
+                          "type": "count"
+                        }
+                      ],
+                      "query": "*",
+                      "queryType": "lucene",
+                      "timeField": "@timestamp"
+                    },
+                    "version": "v0"
+                  },
+                  "refId": "A"
+                }
+              }
+            ],
+            "queryOptions": {},
+            "transformations": []
+          }
+        },
+        "description": "",
+        "id": 8,
+        "links": [],
+        "title": "🎞️ Alert Timeline — The Plot Thickens",
+        "vizConfig": {
+          "group": "timeseries",
+          "kind": "VizConfig",
+          "spec": {
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "barWidthFactor": 0.6,
+                  "drawStyle": "line",
+                  "fillOpacity": 18,
+                  "gradientMode": "opacity",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "insertNulls": false,
+                  "lineInterpolation": "smooth",
+                  "lineWidth": 2,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "never",
+                  "showValues": false,
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": 0
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                },
+                "unit": "short"
+              },
+              "overrides": []
+            },
+            "options": {
+              "annotations": {
+                "clustering": -1,
+                "multiLane": false
+              },
+              "legend": {
+                "calcs": [
+                  "lastNotNull",
+                  "max"
+                ],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "hideZeros": false,
+                "mode": "single",
+                "sort": "none"
+              }
+            }
+          },
+          "version": "13.0.1"
+        }
+      }
+    },
+    "panel-9": {
+      "kind": "Panel",
+      "spec": {
+        "data": {
+          "kind": "QueryGroup",
+          "spec": {
+            "queries": [
+              {
+                "kind": "PanelQuery",
+                "spec": {
+                  "hidden": false,
+                  "query": {
+                    "datasource": {
+                      "name": "bfjnyfqqh8q9sc"
+                    },
+                    "group": "grafana-opensearch-datasource",
+                    "kind": "DataQuery",
+                    "spec": {
+                      "alias": "",
+                      "bucketAggs": [
+                        {
+                          "field": "@timestamp",
+                          "id": "2",
+                          "settings": {
+                            "interval": "5m",
+                            "min_doc_count": "0",
+                            "trimEdges": "0"
+                          },
+                          "type": "date_histogram"
+                        }
+                      ],
+                      "index": "wazuh-alerts-4.x-*",
+                      "luceneQueryType": "Metric",
+                      "metrics": [
+                        {
+                          "id": "1",
+                          "type": "count"
+                        }
+                      ],
+                      "query": "rule.level:[10 TO *]",
+                      "queryType": "lucene",
+                      "timeField": "@timestamp"
+                    },
+                    "version": "v0"
+                  },
+                  "refId": "A"
+                }
+              }
+            ],
+            "queryOptions": {},
+            "transformations": []
+          }
+        },
+        "description": "",
+        "id": 9,
+        "links": [],
+        "title": "🔥 Critical/High Timeline",
+        "vizConfig": {
+          "group": "timeseries",
+          "kind": "VizConfig",
+          "spec": {
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "barWidthFactor": 0.6,
+                  "drawStyle": "line",
+                  "fillOpacity": 18,
+                  "gradientMode": "opacity",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "insertNulls": false,
+                  "lineInterpolation": "smooth",
+                  "lineWidth": 2,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "never",
+                  "showValues": false,
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": 0
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                },
+                "unit": "short"
+              },
+              "overrides": []
+            },
+            "options": {
+              "annotations": {
+                "clustering": -1,
+                "multiLane": false
+              },
+              "legend": {
+                "calcs": [
+                  "lastNotNull",
+                  "max"
+                ],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "hideZeros": false,
+                "mode": "single",
+                "sort": "none"
+              }
+            }
+          },
+          "version": "13.0.1"
+        }
+      }
+    }
+  },
+  "layout": {
+    "kind": "GridLayout",
+    "spec": {
+      "items": [
+        {
+          "kind": "GridLayoutItem",
+          "spec": {
+            "element": {
+              "kind": "ElementReference",
+              "name": "panel-1"
+            },
+            "height": 3,
+            "width": 24,
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "kind": "GridLayoutItem",
+          "spec": {
+            "element": {
+              "kind": "ElementReference",
+              "name": "panel-2"
+            },
+            "height": 4,
+            "width": 4,
+            "x": 0,
+            "y": 3
+          }
+        },
+        {
+          "kind": "GridLayoutItem",
+          "spec": {
+            "element": {
+              "kind": "ElementReference",
+              "name": "panel-3"
+            },
+            "height": 4,
+            "width": 4,
+            "x": 4,
+            "y": 3
+          }
+        },
+        {
+          "kind": "GridLayoutItem",
+          "spec": {
+            "element": {
+              "kind": "ElementReference",
+              "name": "panel-4"
+            },
+            "height": 4,
+            "width": 4,
+            "x": 8,
+            "y": 3
+          }
+        },
+        {
+          "kind": "GridLayoutItem",
+          "spec": {
+            "element": {
+              "kind": "ElementReference",
+              "name": "panel-5"
+            },
+            "height": 4,
+            "width": 4,
+            "x": 12,
+            "y": 3
+          }
+        },
+        {
+          "kind": "GridLayoutItem",
+          "spec": {
+            "element": {
+              "kind": "ElementReference",
+              "name": "panel-6"
+            },
+            "height": 4,
+            "width": 4,
+            "x": 16,
+            "y": 3
+          }
+        },
+        {
+          "kind": "GridLayoutItem",
+          "spec": {
+            "element": {
+              "kind": "ElementReference",
+              "name": "panel-7"
+            },
+            "height": 4,
+            "width": 4,
+            "x": 20,
+            "y": 3
+          }
+        },
+        {
+          "kind": "GridLayoutItem",
+          "spec": {
+            "element": {
+              "kind": "ElementReference",
+              "name": "panel-8"
+            },
+            "height": 8,
+            "width": 16,
+            "x": 0,
+            "y": 7
+          }
+        },
+        {
+          "kind": "GridLayoutItem",
+          "spec": {
+            "element": {
+              "kind": "ElementReference",
+              "name": "panel-9"
+            },
+            "height": 8,
+            "width": 8,
+            "x": 16,
+            "y": 7
+          }
+        },
+        {
+          "kind": "GridLayoutItem",
+          "spec": {
+            "element": {
+              "kind": "ElementReference",
+              "name": "panel-10"
+            },
+            "height": 13,
+            "width": 15,
+            "x": 0,
+            "y": 15
+          }
+        },
+        {
+          "kind": "GridLayoutItem",
+          "spec": {
+            "element": {
+              "kind": "ElementReference",
+              "name": "panel-11"
+            },
+            "height": 6,
+            "width": 9,
+            "x": 15,
+            "y": 15
+          }
+        },
+        {
+          "kind": "GridLayoutItem",
+          "spec": {
+            "element": {
+              "kind": "ElementReference",
+              "name": "panel-12"
+            },
+            "height": 7,
+            "width": 9,
+            "x": 15,
+            "y": 21
+          }
+        },
+        {
+          "kind": "GridLayoutItem",
+          "spec": {
+            "element": {
+              "kind": "ElementReference",
+              "name": "panel-13"
+            },
+            "height": 7,
+            "width": 8,
+            "x": 0,
+            "y": 28
+          }
+        },
+        {
+          "kind": "GridLayoutItem",
+          "spec": {
+            "element": {
+              "kind": "ElementReference",
+              "name": "panel-14"
+            },
+            "height": 7,
+            "width": 8,
+            "x": 8,
+            "y": 28
+          }
+        },
+        {
+          "kind": "GridLayoutItem",
+          "spec": {
+            "element": {
+              "kind": "ElementReference",
+              "name": "panel-15"
+            },
+            "height": 7,
+            "width": 8,
+            "x": 16,
+            "y": 28
+          }
+        },
+        {
+          "kind": "GridLayoutItem",
+          "spec": {
+            "element": {
+              "kind": "ElementReference",
+              "name": "panel-16"
+            },
+            "height": 7,
+            "width": 8,
+            "x": 0,
+            "y": 35
+          }
+        },
+        {
+          "kind": "GridLayoutItem",
+          "spec": {
+            "element": {
+              "kind": "ElementReference",
+              "name": "panel-17"
+            },
+            "height": 7,
+            "width": 8,
+            "x": 8,
+            "y": 35
+          }
+        },
+        {
+          "kind": "GridLayoutItem",
+          "spec": {
+            "element": {
+              "kind": "ElementReference",
+              "name": "panel-18"
+            },
+            "height": 7,
+            "width": 8,
+            "x": 16,
+            "y": 35
+          }
+        },
+        {
+          "kind": "GridLayoutItem",
+          "spec": {
+            "element": {
+              "kind": "ElementReference",
+              "name": "panel-19"
+            },
+            "height": 9,
+            "width": 24,
+            "x": 0,
+            "y": 42
+          }
+        }
+      ]
+    }
+  },
+  "links": [],
+  "liveNow": false,
+  "preload": false,
+  "tags": [
+    "wazuh",
+    "soc",
+    "security",
+    "filmy",
+    "opensearch"
+  ],
+  "timeSettings": {
+    "autoRefresh": "30s",
+    "autoRefreshIntervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h"
+    ],
+    "fiscalYearStartMonth": 0,
+    "from": "now-24h",
+    "hideTimepicker": false,
+    "timezone": "browser",
+    "to": "now"
+  },
+  "title": "🎬 Wazuh Filmy SOC Command Center",
+  "variables": [
+    {
+      "kind": "QueryVariable",
+      "spec": {
+        "allowCustomValue": true,
+        "current": {
+          "text": "All",
+          "value": "$__all"
+        },
+        "hide": "dontHide",
+        "includeAll": true,
+        "label": "Agent",
+        "multi": true,
+        "name": "agent",
+        "options": [],
+        "query": {
+          "datasource": {
+            "name": "bfjnyfqqh8q9sc"
+          },
+          "group": "grafana-opensearch-datasource",
+          "kind": "DataQuery",
+          "spec": {
+            "__legacyStringValue": "{\"find\":\"terms\",\"field\":\"agent.name.keyword\",\"query\":\"*\"}"
+          },
+          "version": "v0"
+        },
+        "refresh": "onDashboardLoad",
+        "regex": "",
+        "regexApplyTo": "value",
+        "skipUrlSync": false,
+        "sort": "disabled"
+      }
+    },
+    {
+      "kind": "CustomVariable",
+      "spec": {
+        "allowCustomValue": true,
+        "current": {
+          "text": "All",
+          "value": "$__all"
+        },
+        "hide": "dontHide",
+        "includeAll": true,
+        "label": "Severity",
+        "multi": false,
+        "name": "severity",
+        "options": [],
+        "query": "Low : rule.level:[0 TO 6],Medium : rule.level:[7 TO 9],High : rule.level:[10 TO 12],Critical : rule.level:[13 TO *]",
+        "skipUrlSync": false,
+        "valuesFormat": "csv"
+      }
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+# Environment variables
+.env
+*.env
+
+# Logs
+*.log
+
+# Secrets / keys
+*.pem
+*.key
+*.pfx
+*.ovpn
+
+# Backup files
+*.bak
+*.tmp
+
+# Python
+__pycache__/
+*.pyc
+
+# VSCode
+.vscode/
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# macOS
+.DS_Store
+
+# Sensitive folders
+secrets/
+private/
+
+# Terraform / cloud creds
+*.tfstate
+*.tfvars
+
+# Node
+node_modules/
+
+# Virtual environments
+venv/
+.env/
+
+# Wazuh / SOC exports if sensitive
+*.zip
