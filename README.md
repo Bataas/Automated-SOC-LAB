@@ -622,11 +622,34 @@ All attack simulations and testing activities were conducted within controlled l
 No unauthorized systems or third-party environments were targeted during the development or testing of this project.
 
 
-## Author
+## Project Team
+
+This project was developed collaboratively as part of a cybersecurity SOC automation and incident response lab environment.
+
+### Team Members
+
+* Bishnu Timilsaina
+* Binod Gurung
+* Roshan Chaudhary
+* Amrit Rai
+
+### Primary Contributions
 
 **Bishnu Timilsaina**
-Cybersecurity Student | SOC & Detection Engineering Enthusiast | Aspiring Security Analyst & Penetration Tester
 
-* LinkedIn: https://www.linkedin.com/in/bishnu-timilsaina/
-* GitHub: https://github.com/Bataas/
+* Shuffle SOAR workflow development
+* Alert enrichment automation
+* DFIR-IRIS integration
+* Incident deduplication logic
+* Attack simulation testing
+* Detection workflow validation
 
+Additional contributions from team members included infrastructure deployment, dashboard visualization, monitoring configuration, testing, and project documentation.
+
+---
+
+## Connect With Me
+
+LinkedIn: https://www.linkedin.com/in/bishnu-timilsaina/
+
+GitHub: https://github.com/Bataas/
