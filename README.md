@@ -61,7 +61,6 @@ The SIEM server hosts:
 * Wazuh Manager
 * Wazuh Indexer
 * Wazuh Dashboard
-![Wazuh Dashboard](screenshots/wazuh-dashboard.png)
 
 This server is responsible for:
 
@@ -72,7 +71,6 @@ This server is responsible for:
 * Alert generation
 
 ### SOC Tools Server
-![SOC Architecture](architecture/system-architecture.png)
 
 The SOC tools server hosts:
 
