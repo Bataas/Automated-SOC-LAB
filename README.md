@@ -2,7 +2,7 @@
 
 ## Overview
 This lab is Cloud-based cybersecurity monitoring and incident response platform designed to simulate real-world SOC workflows.
-This project integrates SIEM, SOAR, DFIR-IRSI, threat intelligence, and automated alerting technologies to detect, analyze, and respond to security events across multiple endpoints and operating systems.
+This project integrates SIEM, SOAR, DFIR-IRIS, threat intelligence, and automated alerting technologies to detect, analyze, and respond to security events across multiple endpoints and operating systems.
 The lab was built using AWS cloud infrastructure and combines Wazuh SIEM, Shuffle SOAR, DFIR-IRIS, Grafana, VirusTotal, AbuseIPDB, and Microsoft Teams integrations to create an end-to-end security monitoring environment.
 The platform supports:
 1. Centralized log collection and monitoring
